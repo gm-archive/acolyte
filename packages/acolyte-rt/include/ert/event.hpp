@@ -14,7 +14,7 @@ namespace ert {
 
   struct event {
     typedef object::id_t metadata_t;
-    event_t type;
+    void (object::*fn)(const metadata_t&);
     metadata_t metadata;
   };
 }

@@ -6,6 +6,10 @@
 
 #include "ert/real.hpp"
 #include "ert/property.hpp"
+//#include "ert/event.hpp"
+
+#include <set>
+#include <map>
 
 namespace ert {
   struct object {

@@ -29,7 +29,8 @@ namespace ert {
     real_t xprevious;
     real_t yprevious;
     
-    std::vector<std::multimap<real_t, event>::iterator> events;
+    std::vector<event> object_events;
+    std::vector<std::multimap<real_t, event>::iterator> linked_events;
     
     static std::unique_ptr<object>& from_id(id_t);
     
@@ -43,8 +44,8 @@ namespace ert {
     virtual real_t object_sprite_index() = 0;
     virtual real_t object_mask_index() = 0;
     
-    virtual void object_link_events() = 0;
-    void object_unlink_events();
+    void relink_events();
+    void unlink_events();
     
     struct object_properties {
       bool solid;

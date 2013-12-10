@@ -7,7 +7,6 @@
 #include "ert/real.hpp"
 #include "ert/property.hpp"
 
-#include <set>
 #include <map>
 
 namespace ert {
@@ -176,13 +175,20 @@ namespace ert {
     void update_speed();
     property<object, real_t, &object::get_speed, &object::set_speed> speed();
   };
-}
-
-#include "ert/event.hpp"
-
-namespace ert {
+  
+  enum event_t {
+    // TODO: events from GM:S documentation
+    ev_placeholder = 0
+  };
+  
+  struct event {
+    typedef object::id_t metadata_t;
+    void (object::*fn)(const metadata_t&);
+    metadata_t metadata;
+  };
+  
   namespace internal {
-    //
+    std::map<event_t, std::multimap<real_t, event>> event_schedule;
   }
 }
 

@@ -74,17 +74,6 @@ Use the [GitHub issue tracker] to file bug reports.
 
 [GitHub issue tracker]: https://github.com/AcolyteSF/acolyte/issues
 
-## Troubleshooting & Links
-
-* [GM:S Reference](http://docs.yoyogames.com)
-* [C/C++ Reference](http://en.cppreference.com/w/)
-* [CMake Wiki](http://www.cmake.org/Wiki/CMake)
-* [OpenGL Wiki](http://www.opengl.org/wiki/Main_Page)
-
-You may also be interested in [ENIGMA].
-
-[ENIGMA]: http://enigma-dev.org
-
 ## Contributing
 
 ### IRC
@@ -119,3 +108,14 @@ follows;
 See `LICENSE` for more information.
 
 Third party libraries and dependencies are licensed independently.
+
+## Troubleshooting & Links
+
+* [GM:S Reference](http://docs.yoyogames.com)
+* [C/C++ Reference](http://en.cppreference.com/w/)
+* [CMake Wiki](http://www.cmake.org/Wiki/CMake)
+* [OpenGL Wiki](http://www.opengl.org/wiki/Main_Page)
+
+You may also be interested in [ENIGMA].
+
+[ENIGMA]: http://enigma-dev.org

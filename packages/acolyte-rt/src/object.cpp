@@ -8,6 +8,11 @@
 #include "ert/vector.hpp"
 
 namespace ert {
+  namespace internal {
+    std::map<event_t, std::multimap<real_t, event>> event_schedule;
+    std::map<object::id_t, std::unique_ptr<object>> object_map;
+  }
+  
   object::object(id_t id, real_t x, real_t y)
     : id(id), xstart(x), ystart(y), x(x), y(y), xprevious(x), yprevious(y) {
   }

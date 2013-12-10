@@ -7,9 +7,13 @@
 #include "ert/real.hpp"
 #include "ert/property.hpp"
 
+#include <memory>
+#include <vector>
 #include <map>
 
 namespace ert {
+  struct event;
+  
   struct object {
     typedef unsigned long id_t;
     
@@ -24,6 +28,8 @@ namespace ert {
     real_t y;
     real_t xprevious;
     real_t yprevious;
+    
+    std::vector<std::multimap<real_t, event>::iterator> events;
     
     virtual id_t get_object_index() = 0;
     property_ro<object, id_t, &object::get_object_index> object_index();
@@ -188,7 +194,8 @@ namespace ert {
   };
   
   namespace internal {
-    std::map<event_t, std::multimap<real_t, event>> event_schedule;
+    extern std::map<event_t, std::multimap<real_t, event>> event_schedule;
+    extern std::map<object::id_t, std::unique_ptr<object>> object_map;
   }
 }
 

@@ -31,6 +31,8 @@ namespace ert {
     
     std::vector<std::multimap<real_t, event>::iterator> events;
     
+    static std::unique_ptr<object>& from_id(id_t);
+    
     virtual id_t get_object_index() = 0;
     property_ro<object, id_t, &object::get_object_index> object_index();
     

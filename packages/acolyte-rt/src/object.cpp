@@ -7,6 +7,9 @@
 #include "ert/math.hpp"
 #include "ert/vector.hpp"
 
+#include <memory>
+#include <iostream>
+
 namespace ert {
   namespace internal {
     decltype(event_schedule) event_schedule;
@@ -15,6 +18,15 @@ namespace ert {
   
   object::object(id_t id, real_t x, real_t y)
     : id(id), xstart(x), ystart(y), x(x), y(y), xprevious(x), yprevious(y) {
+  }
+  
+  std::unique_ptr<object>& object::from_id(id_t id) {
+    auto it = internal::object_map.find(id);
+    if (it == internal::object_map.end()) {
+      std::cerr << "error: object does not exist" << std::endl;
+      std::abort();
+    }
+    return it->second;
   }
   
   property_ro<object, object::id_t, &object::get_object_index> object::object_index() {

@@ -29,12 +29,20 @@ namespace ert {
     return it->second;
   }
   
-  void object::object_unlink_events() {
-    for (auto ev : this->events) {
+  void object::relink_events() {
+    this->unlink_events();
+    this->linked_events.resize(this->object_events.size());
+    size_t n = 0;
+    for (auto ev : this->object_events) {
+      this->linked_events[n++] = internal::event_schedule[ev.type].insert(std::make_pair(this->properties.depth, ev));
+    }
+  }
+  
+  void object::unlink_events() {
+    for (auto ev : this->linked_events) {
       internal::event_schedule[(*ev).second.type].erase(ev);
     }
-    // TODO: investigate object lifetime, rename functions, automate in destructor
-    this->events.clear();
+    this->linked_events.clear();
   }
   
   property_ro<object, object::id_t, &object::get_object_index> object::object_index() {

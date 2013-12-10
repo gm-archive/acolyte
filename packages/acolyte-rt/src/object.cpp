@@ -29,6 +29,14 @@ namespace ert {
     return it->second;
   }
   
+  void object::object_unlink_events() {
+    for (auto ev : this->events) {
+      internal::event_schedule[(*ev).second.type].erase(ev);
+    }
+    // TODO: investigate object lifetime, rename functions, automate in destructor
+    this->events.clear();
+  }
+  
   property_ro<object, object::id_t, &object::get_object_index> object::object_index() {
     return {this};
   }

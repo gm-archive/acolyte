@@ -44,6 +44,7 @@ namespace ert {
     virtual real_t object_mask_index() = 0;
     
     virtual void object_link_events() = 0;
+    void object_unlink_events();
     
     struct object_properties {
       bool solid;
@@ -195,6 +196,7 @@ namespace ert {
     typedef object::id_t metadata_t;
     void (object::*fn)(const metadata_t&);
     metadata_t metadata;
+    event_t type;
   };
   
   namespace internal {

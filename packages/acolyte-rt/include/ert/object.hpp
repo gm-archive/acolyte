@@ -6,7 +6,6 @@
 
 #include "ert/real.hpp"
 #include "ert/property.hpp"
-//#include "ert/event.hpp"
 
 #include <set>
 #include <map>
@@ -177,7 +176,11 @@ namespace ert {
     void update_speed();
     property<object, real_t, &object::get_speed, &object::set_speed> speed();
   };
-  
+}
+
+#include "ert/event.hpp"
+
+namespace ert {
   namespace internal {
     //
   }

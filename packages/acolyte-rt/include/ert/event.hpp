@@ -9,7 +9,7 @@
 namespace ert {
   enum event_t {
     // TODO: events from GM:S documentation
-    ev_placeholder
+    ev_placeholder = 0
   };
 
   struct event {

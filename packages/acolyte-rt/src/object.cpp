@@ -8,11 +8,11 @@
 #include "ert/vector.hpp"
 
 namespace ert {
-  object::object(unsigned long id, real_t x, real_t y)
+  object::object(id_t id, real_t x, real_t y)
     : id(id), xstart(x), ystart(y), x(x), y(y), xprevious(x), yprevious(y) {
   }
   
-  property_ro<object, unsigned long, &object::get_object_index> object::object_index() {
+  property_ro<object, object::id_t, &object::get_object_index> object::object_index() {
     return {this};
   }
   

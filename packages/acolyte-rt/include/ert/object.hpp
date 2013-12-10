@@ -9,10 +9,12 @@
 
 namespace ert {
   struct object {
-    object(unsigned long id, real_t x, real_t y);
+    typedef unsigned long id_t;
+    
+    object(id_t id, real_t x, real_t y);
     virtual ~object();
     
-    const unsigned long id;
+    const id_t id;
     const real_t xstart;
     const real_t ystart;
     
@@ -21,8 +23,8 @@ namespace ert {
     real_t xprevious;
     real_t yprevious;
     
-    virtual unsigned long get_object_index() = 0;
-    property_ro<object, unsigned long, &object::get_object_index> object_index();
+    virtual id_t get_object_index() = 0;
+    property_ro<object, id_t, &object::get_object_index> object_index();
     
     virtual bool object_is_solid() = 0;
     virtual bool object_is_visible() = 0;
@@ -171,6 +173,10 @@ namespace ert {
     void update_speed();
     property<object, real_t, &object::get_speed, &object::set_speed> speed();
   };
+  
+  namespace internal {
+    //
+  }
 }
 
 #endif // ERT_OBJECT_HPP_

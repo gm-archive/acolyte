@@ -9,8 +9,8 @@
 
 namespace ert {
   namespace internal {
-    std::map<event_t, std::multimap<real_t, event>> event_schedule;
-    std::map<object::id_t, std::unique_ptr<object>> object_map;
+    decltype(event_schedule) event_schedule;
+    decltype(object_map) object_map;
   }
   
   object::object(id_t id, real_t x, real_t y)

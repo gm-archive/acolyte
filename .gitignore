@@ -1,0 +1,10 @@
+
+*
+!.gitignore
+!.gitattributes
+!README.md
+!LICENSE
+!CMakeLists.txt
+!**/
+!/packages/**/*.cpp
+!/packages/**/*.hpp

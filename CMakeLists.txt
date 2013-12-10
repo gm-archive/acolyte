@@ -1,0 +1,17 @@
+
+project (ACOLYTE NONE)
+cmake_minimum_required (VERSION 2.8)
+
+set (ACOLYTE_VERSION_MAJOR 1)
+set (ACOLYTE_VERSION_MINOR 0)
+
+set (PACKAGE_NAME Acolyte)
+set (PACKAGE_VERSION "${ACOLYTE_VERSION_MAJOR}.${ACOLYTE_VERSION_MINOR}")
+set (PACKAGE_STRING "${PACKAGE_NAME} ${PACKAGE_VERSION}")
+set (PACKAGE_BUGREPORT "https://github.com/kvanberendonck/acolyte/issues/")
+
+set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build/lib)
+set (CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build/lib)
+set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build/bin)
+
+add_subdirectory (packages)

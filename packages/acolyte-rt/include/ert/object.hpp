@@ -43,6 +43,8 @@ namespace ert {
     virtual real_t object_sprite_index() = 0;
     virtual real_t object_mask_index() = 0;
     
+    virtual void object_link_events() = 0;
+    
     struct object_properties {
       bool solid;
       bool visible;

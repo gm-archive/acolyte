@@ -16,6 +16,7 @@ namespace ert {
     decltype(object_map) object_map;
   }
   
+  // TODO: clear up the ambiguity
   object::object(id_t id, real_t x, real_t y)
     : id(id), xstart(x), ystart(y), x(x), y(y), xprevious(x), yprevious(y) {
   }
@@ -29,12 +30,14 @@ namespace ert {
     return it->second;
   }
   
+  // Refractor: move link/unlink into event
   void object::relink_events() {
     this->unlink_events();
     this->linked_events.resize(this->object_events.size());
     size_t n = 0;
     for (auto ev : this->object_events) {
-      this->linked_events[n++] = internal::event_schedule[ev.type].insert(std::make_pair(this->properties.depth, ev));
+      this->linked_events[n++] =
+        internal::event_schedule[ev.type].insert(std::make_pair(this->properties.depth, ev));
     }
   }
   

@@ -28,6 +28,51 @@ namespace ert {
     : id(id), xstart(xpos), ystart(ypos), x(xpos), y(ypos), xprevious(xpos), yprevious(ypos) {
   }
   
+  void object::initialize() {
+    this->properties.solid = this->object_is_solid();
+    this->properties.visible = this->object_is_visible();
+    this->properties.persistent = this->object_is_persistent();
+    this->properties.depth = this->object_depth();
+    this->properties.sprite_index = this->object_sprite_index();
+    this->properties.mask_index = this->object_mask_index();
+    
+    this->properties.image_alpha = 1;
+    this->properties.image_angle = 0;
+    this->properties.image_blend = 0;
+    this->properties.image_index = 0;
+    this->properties.image_speed = 1;
+    this->properties.image_xscale = 1;
+    this->properties.image_yscale = 1;
+    this->properties.friction = 0;
+    this->properties.hfriction = 0;
+    this->properties.vfriction = 0;
+    this->properties.gravity = 0;
+    this->properties.hgravity = 0;
+    this->properties.vgravity = 0;
+    this->properties.gravity_direction = 0;
+    this->properties.hspeed = 0;
+    this->properties.vspeed = 0;
+    this->properties.speed = 0;
+    this->properties.direction = 0;
+    
+    this->link_events();
+  }
+  
+  void object::link_events() {
+    this->linked_events.resize(this->object_events.size());
+    size_t n = 0;
+    for (auto& ev : this->object_events) {
+      this->linked_events[n++] = internal::event_link(this->properties.depth, ev);
+    }
+  }
+  
+  void object::unlink_events() {
+    for (auto& ev : this->linked_events) {
+      internal::event_unlink(ev);
+    }
+    this->linked_events.clear();
+  }
+  
   object& object::from_id(id_t id) {
     auto it = internal::object_map.find(id);
     if (it == internal::object_map.end()) {
@@ -35,24 +80,6 @@ namespace ert {
       std::abort();
     }
     return *it->second;
-  }
-  
-  // Refractor: move link/unlink into event
-  void object::relink_events() {
-    this->unlink_events();
-    this->linked_events.resize(this->object_events.size());
-    size_t n = 0;
-    for (auto ev : this->object_events) {
-      this->linked_events[n++] =
-        internal::event_schedule[ev.type].insert(std::make_pair(this->properties.depth, ev));
-    }
-  }
-  
-  void object::unlink_events() {
-    for (auto ev : this->linked_events) {
-      internal::event_schedule[(*ev).second.type].erase(ev);
-    }
-    this->linked_events.clear();
   }
   
   property_ro<object, object::id_t, &object::get_object_index> object::object_index() {

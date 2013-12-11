@@ -44,7 +44,8 @@ namespace ert {
     virtual real_t object_sprite_index() = 0;
     virtual real_t object_mask_index() = 0;
     
-    void relink_events();
+    void initialize();
+    void link_events();
     void unlink_events();
     
     struct object_properties {

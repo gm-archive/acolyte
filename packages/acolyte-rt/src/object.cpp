@@ -22,6 +22,15 @@ namespace ert {
     void event_unlink(events_by_depth_t::iterator& it) {
       event_schedule[(*it).second.type].erase(it);
     }
+    
+    object& object_from_id(object::id_t id) {
+      auto it = object_map.find(id);
+      if (it == object_map.end()) {
+        std::cerr << "error: object does not exist" << std::endl;
+        std::abort();
+      }
+      return *it->second;
+    }
   }
   
   object::object(id_t id, real_t xpos, real_t ypos)
@@ -71,15 +80,6 @@ namespace ert {
       internal::event_unlink(ev);
     }
     this->linked_events.clear();
-  }
-  
-  object& object::from_id(id_t id) {
-    auto it = internal::object_map.find(id);
-    if (it == internal::object_map.end()) {
-      std::cerr << "error: object does not exist" << std::endl;
-      std::abort();
-    }
-    return *it->second;
   }
   
   property_ro<object, object::id_t, &object::get_object_index> object::object_index() {

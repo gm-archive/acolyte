@@ -32,8 +32,6 @@ namespace ert {
     std::vector<event> object_events;
     std::vector<std::multimap<real_t, event>::iterator> linked_events;
     
-    static object& from_id(id_t);
-    
     virtual id_t get_object_index() = 0;
     property_ro<object, id_t, &object::get_object_index> object_index();
     
@@ -208,6 +206,8 @@ namespace ert {
     
     events_by_depth_t::iterator event_link(real_t, event&);
     void event_unlink(events_by_depth_t::iterator&);
+    
+    object& object_from_id(object::id_t);
   }
 }
 

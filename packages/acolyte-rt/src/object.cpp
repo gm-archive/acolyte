@@ -127,8 +127,9 @@ namespace ert {
   }
   
   void object::set_depth(real_t depth) {
-    // TOOD: update objects event registrations
     this->properties.depth = depth;
+    this->unlink_events();
+    this->link_events();
   }
   
   property<object, real_t, &object::get_depth, &object::set_depth> object::depth() {

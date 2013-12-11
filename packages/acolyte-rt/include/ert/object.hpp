@@ -195,8 +195,7 @@ namespace ert {
   
   struct event {
     typedef object::id_t metadata_t;
-    void (object::*fn)(const metadata_t&);
-    object* obj;
+    std::function<void(const metadata_t)> fn;
     event_t type;
     metadata_t metadata;
   };

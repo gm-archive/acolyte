@@ -16,9 +16,8 @@ namespace ert {
     decltype(object_map) object_map;
   }
   
-  // TODO: clear up the ambiguity
-  object::object(id_t id, real_t x, real_t y)
-    : id(id), xstart(x), ystart(y), x(x), y(y), xprevious(x), yprevious(y) {
+  object::object(id_t id, real_t xpos, real_t ypos)
+    : id(id), xstart(xpos), ystart(ypos), x(xpos), y(ypos), xprevious(xpos), yprevious(ypos) {
   }
   
   object& object::from_id(id_t id) {

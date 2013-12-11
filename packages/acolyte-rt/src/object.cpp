@@ -14,6 +14,14 @@ namespace ert {
   namespace internal {
     decltype(event_schedule) event_schedule;
     decltype(object_map) object_map;
+    
+    events_by_depth_t::iterator event_link(real_t depth, event& ev) {
+      return event_schedule[ev.type].insert(std::make_pair(depth, ev));
+    }
+    
+    void event_unlink(events_by_depth_t::iterator& it) {
+      event_schedule[(*it).second.type].erase(it);
+    }
   }
   
   object::object(id_t id, real_t xpos, real_t ypos)

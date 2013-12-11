@@ -201,8 +201,12 @@ namespace ert {
   };
   
   namespace internal {
-    extern std::map<event_t, std::multimap<real_t, event>> event_schedule;
+    typedef std::multimap<real_t, event> events_by_depth_t;
+    extern std::map<event_t, events_by_depth_t> event_schedule;
     extern std::map<object::id_t, std::unique_ptr<object>> object_map;
+    
+    events_by_depth_t::iterator event_link(real_t, event&);
+    void event_unlink(events_by_depth_t::iterator&);
   }
 }
 

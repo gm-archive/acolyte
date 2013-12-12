@@ -203,6 +203,11 @@ namespace ert {
     metadata_t metadata;
   };
   
+  enum {
+    all = 0,
+    noone
+  };
+  
   namespace internal {
     typedef std::multimap<real_t, event> events_by_depth_t;
     extern std::map<event_t, events_by_depth_t> event_schedule;
@@ -212,6 +217,12 @@ namespace ert {
     void event_unlink(events_by_depth_t::iterator&);
     
     object& object_from_id(object::id_t);
+    
+    typedef std::function<void(object&)> with_fn_t;
+    void with(real_t, with_fn_t);
+    void with_objects_all(with_fn_t);
+    void with_objects_id(object::id_t, with_fn_t);
+    void with_objects_index(object::index_t, with_fn_t);
   }
 }
 

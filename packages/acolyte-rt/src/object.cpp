@@ -31,6 +31,35 @@ namespace ert {
       }
       return *it->second;
     }
+    
+    void with(real_t num, with_fn_t fn) {
+      switch(static_cast<unsigned long>(num)) {
+        case all:
+          return with_objects_all(fn);
+        case noone:
+          return;
+        default:
+          return (num < 1000001) ? with_objects_index(num, fn) : with_objects_id(num, fn);
+      }
+    }
+    
+    void with_objects_all(with_fn_t fn) {
+      for (auto& obj : object_map) {
+        fn(*obj.second);
+      }
+    }
+    
+    void with_objects_id(object::id_t id, with_fn_t fn) {
+      fn(object_from_id(id));
+    }
+    
+    void with_objects_index(object::index_t index, with_fn_t fn) {
+      for (auto& obj : object_map) {
+        if (obj.second->object_index() == index) {
+          fn(*obj.second);
+        }
+      }
+    }
   }
   
   object::object(id_t id, real_t xpos, real_t ypos)

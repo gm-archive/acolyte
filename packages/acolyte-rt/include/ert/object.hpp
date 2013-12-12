@@ -15,6 +15,7 @@ namespace ert {
   struct event;
   
   struct object {
+    typedef unsigned long index_t;
     typedef unsigned long id_t;
     
     object(id_t id, real_t x, real_t y);
@@ -32,8 +33,8 @@ namespace ert {
     std::vector<event> object_events;
     std::vector<std::multimap<real_t, event>::iterator> linked_events;
     
-    virtual id_t get_object_index() = 0;
-    property_ro<object, id_t, &object::get_object_index> object_index();
+    virtual index_t get_object_index() = 0;
+    property_ro<object, index_t, &object::get_object_index> object_index();
     
     virtual bool object_is_solid() = 0;
     virtual bool object_is_visible() = 0;
@@ -41,6 +42,9 @@ namespace ert {
     virtual real_t object_depth() = 0;
     virtual real_t object_sprite_index() = 0;
     virtual real_t object_mask_index() = 0;
+    
+    virtual void object_create() = 0;
+    virtual void object_destroy() = 0;
     
     void initialize();
     void link_events();
@@ -193,7 +197,7 @@ namespace ert {
   };
   
   struct event {
-    typedef object::id_t metadata_t;
+    typedef object::index_t metadata_t;
     std::function<void(const metadata_t)> fn;
     event_t type;
     metadata_t metadata;

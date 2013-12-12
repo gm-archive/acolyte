@@ -46,7 +46,8 @@ namespace ert {
     virtual void object_create() = 0;
     virtual void object_destroy() = 0;
     
-    void initialize();
+    void create();
+    void destroy();
     void link_events();
     void unlink_events();
     

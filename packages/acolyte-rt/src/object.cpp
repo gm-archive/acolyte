@@ -66,7 +66,7 @@ namespace ert {
     : id(id), xstart(xpos), ystart(ypos), x(xpos), y(ypos), xprevious(xpos), yprevious(ypos) {
   }
   
-  void object::initialize() {
+  void object::create() {
     this->properties.solid = this->object_is_solid();
     this->properties.visible = this->object_is_visible();
     this->properties.persistent = this->object_is_persistent();
@@ -94,6 +94,12 @@ namespace ert {
     this->properties.direction = 0;
     
     this->link_events();
+    this->object_create();
+  }
+  
+  void object::destroy() {
+    this->object_destroy();
+    this->unlink_events();
   }
   
   void object::link_events() {

@@ -16,8 +16,8 @@ namespace ert {
   
 #define def_property(__type, __name) \
   __type get_##__name (); \
-  __type set_##__name (); \
-  property_ro<object, __type, &object::get_##__name, &object::set_##__name> __name##()
+  void set_##__name (__type); \
+  property<object, __type, &object::get_##__name, &object::set_##__name> __name ()
 
 #define def_property_ro(__type, __name) \
   __type get_##__name (); \

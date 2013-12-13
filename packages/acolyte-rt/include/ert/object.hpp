@@ -14,183 +14,129 @@
 namespace ert {
   struct event;
   
+#define def_property(__type, __name) \
+  __type get##__name##(); \
+  __type set##__name##(); \
+  property<object, __type, &object::get_##__name, &object::set_##__name> __name##()
+  
+#define def_property_ro(__type, __name) \
+  __type get_##__name##(); \
+  property_ro<object, __type, &object::get_##__name> __name##()
+  
   struct object {
     typedef unsigned long index_t;
     typedef unsigned long id_t;
     
-    object(id_t id, real_t x, real_t y);
+    object(index_t, id_t, real_t, real_t, bool, bool, bool, real_t, real_t, real_t, std::vector<event>&);
     virtual ~object();
     
-    const id_t id;
-    const real_t xstart;
-    const real_t ystart;
+    virtual void event_create() = 0;
+    virtual void event_destroy() = 0;
     
-    real_t x;
-    real_t y;
-    real_t xprevious;
-    real_t yprevious;
-    
-    std::vector<event> object_events;
-    std::vector<std::multimap<real_t, event>::iterator> linked_events;
-    
-    virtual index_t get_object_index() = 0;
-    property_ro<object, index_t, &object::get_object_index> object_index();
-    
-    virtual bool object_is_solid() = 0;
-    virtual bool object_is_visible() = 0;
-    virtual bool object_is_persistent() = 0;
-    virtual real_t object_depth() = 0;
-    virtual real_t object_sprite_index() = 0;
-    virtual real_t object_mask_index() = 0;
-    
-    virtual void object_create() = 0;
-    virtual void object_destroy() = 0;
-    
-    void create();
-    void destroy();
     void link_events();
     void unlink_events();
     
-    struct object_properties {
-      bool solid;
-      bool visible;
-      bool persistent;
-      real_t depth;
-      real_t sprite_index;
-      real_t mask_index;
-      real_t image_alpha;
-      real_t image_angle;
-      real_t image_blend;
-      real_t image_index;
-      real_t image_speed;
-      real_t image_xscale;
-      real_t image_yscale;
-      real_t friction;
-      real_t hfriction;
-      real_t vfriction;
-      real_t gravity;
-      real_t hgravity;
-      real_t vgravity;
-      real_t gravity_direction;
-      real_t hspeed;
-      real_t vspeed;
-      real_t speed;
-      real_t direction;
-    } properties;
+    std::vector<event> defined_events;
+    std::vector<std::multimap<real_t, event>::iterator> linked_events;
     
-    bool get_solid();
-    void set_solid(bool);
-    property<object, bool, &object::get_solid, &object::set_solid> solid();
+    const id_t _id;
+    def_property_ro(id_t, id);
     
-    bool get_visible();
-    void set_visible(bool);
-    property<object, bool, &object::get_visible, &object::set_visible> visible();
+    const real_t _xstart;
+    def_property_ro(real_t, xstart);
     
-    bool get_persistent();
-    void set_persistent(bool);
-    property<object, bool, &object::get_persistent, &object::set_persistent> persistent();
+    const real_t _ystart;
+    def_property_ro(real_t, ystart);
     
-    real_t get_depth();
-    void set_depth(real_t);
-    property<object, real_t, &object::get_depth, &object::set_depth> depth();
+    real_t _x;
+    def_property(real_t, x);
     
-    real_t get_sprite_index();
-    void set_sprite_index(real_t);
-    property<object, real_t, &object::get_sprite_index, &object::set_sprite_index> sprite_index();
+    real_t _y;
+    def_property(real_t, y);
     
-    real_t get_sprite_width();
-    property_ro<object, real_t, &object::get_sprite_width> sprite_width();
+    real_t _xprevious;
+    def_property_ro(real_t, xprevious);
     
-    real_t get_sprite_height();
-    property_ro<object, real_t, &object::get_sprite_height> sprite_height();
+    real_t _yprevious;
+    def_property_ro(real_t, yprevious);
     
-    real_t get_sprite_xoffset();
-    property_ro<object, real_t, &object::get_sprite_xoffset> sprite_xoffset();
+    bool _solid;
+    def_property(bool, solid);
     
-    real_t get_sprite_yoffset();
-    property_ro<object, real_t, &object::get_sprite_yoffset> sprite_yoffset();
+    bool _visible;
+    def_property(bool, visible);
     
-    real_t get_image_alpha();
-    void set_image_alpha(real_t);
-    property<object, real_t, &object::get_image_alpha, &object::set_image_alpha> image_alpha();
+    bool _persistent;
+    def_property(bool, persistent);
     
-    real_t get_image_angle();
-    void set_image_angle(real_t);
-    property<object, real_t, &object::get_image_angle, &object::set_image_angle> image_angle();
+    real_t _depth;
+    def_property(real_t, depth);
     
-    real_t get_image_blend();
-    void set_image_blend(real_t);
-    property<object, real_t, &object::get_image_blend, &object::set_image_blend> image_blend();
+    real_t _sprite_index;
+    def_property(real_t, sprite_index);
     
-    real_t get_image_index();
-    void set_image_index(real_t);
-    property<object, real_t, &object::get_image_index, &object::set_image_index> image_index();
+    real_t _image_alpha;
+    def_property(real_t, image_alpha);
     
-    real_t get_image_number();
-    property_ro<object, real_t, &object::get_image_number> image_number();
+    real_t _image_angle;
+    def_property(real_t, image_angle);
     
-    real_t get_image_speed();
-    void set_image_speed(real_t);
-    property<object, real_t, &object::get_image_speed, &object::set_image_speed> image_speed();
+    real_t _image_blend;
+    def_property(real_t, image_blend);
     
-    real_t get_image_xscale();
-    void set_image_xscale(real_t);
-    property<object, real_t, &object::get_image_xscale, &object::set_image_xscale> image_xscale();
+    real_t _image_index;
+    def_property(real_t, image_index);
     
-    real_t get_image_yscale();
-    void set_image_yscale(real_t);
-    property<object, real_t, &object::get_image_yscale, &object::set_image_yscale> image_yscale();
+    real_t _image_speed;
+    def_property(real_t, image_speed);
     
-    real_t get_mask_index();
-    void set_mask_index(real_t);
-    property<object, real_t, &object::get_mask_index, &object::set_mask_index> mask_index();
+    real_t _image_xscale;
+    def_property(real_t, image_xscale);
     
-    real_t get_bbox_bottom();
-    property_ro<object, real_t, &object::get_bbox_bottom> bbox_bottom();
+    real_t _image_yscale;
+    def_property(real_t, image_yscale);
     
-    real_t get_bbox_left();
-    property_ro<object, real_t, &object::get_bbox_left> bbox_left();
+    real_t _mask_index;
+    def_property(real_t, mask_index);
     
-    real_t get_bbox_right();
-    property_ro<object, real_t, &object::get_bbox_right> bbox_right();
+    real_t _direction;
+    def_property(real_t, direction);
     
-    real_t get_bbox_top();
-    property_ro<object, real_t, &object::get_bbox_top> bbox_top();
+    real_t _friction;
+    real_t _hfriction;
+    real_t _vfriction;
+    def_property(real_t, friction);
     
-    real_t get_direction();
-    void set_direction(real_t);
-    void update_direction();
-    property<object, real_t, &object::get_direction, &object::set_direction> direction();
+    real_t _gravity;
+    real_t _hgravity;
+    real_t _vgravity;
+    def_property(real_t, gravity);
     
-    real_t get_friction();
-    void set_friction(real_t);
-    void update_friction();
-    property<object, real_t, &object::get_friction, &object::set_friction> friction();
+    real_t _gravity_direction;
+    def_property(real_t, gravity_direction);
     
-    real_t get_gravity();
-    void set_gravity(real_t);
-    void update_gravity();
-    property<object, real_t, &object::get_gravity, &object::set_gravity> gravity();
+    real_t _speed;
+    def_property(real_t, speed);
     
-    real_t get_gravity_direction();
-    void set_gravity_direction(real_t);
-    property<object, real_t, &object::get_gravity_direction, &object::set_gravity_direction> gravity_direction();
+    real_t _hspeed;
+    def_property(real_t, hspeed);
     
-    real_t get_hspeed();
-    void set_hspeed(real_t);
-    void update_hspeed();
-    property<object, real_t, &object::get_hspeed, &object::set_hspeed> hspeed();
+    real_t _vspeed;
+    def_property(real_t, vspeed);
     
-    real_t get_vspeed();
-    void set_vspeed(real_t);
-    void update_vspeed();
-    property<object, real_t, &object::get_vspeed, &object::set_vspeed> vspeed();
-    
-    real_t get_speed();
-    void set_speed(real_t);
-    void update_speed();
-    property<object, real_t, &object::get_speed, &object::set_speed> speed();
+    def_property_ro(real_t, sprite_width);
+    def_property_ro(real_t, sprite_height);
+    def_property_ro(real_t, sprite_xoffset);
+    def_property_ro(real_t, sprite_yoffset);
+    def_property_ro(real_t, image_number);
+    def_property_ro(real_t, bbox_bottom);
+    def_property_ro(real_t, bbox_left);
+    def_property_ro(real_t, bbox_right);
+    def_property_ro(real_t, bbox_top);
   };
+  
+#undef def_property
+#undef def_property_ro
   
   enum event_t {
     // TODO: events from GM:S documentation

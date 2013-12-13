@@ -62,8 +62,11 @@ namespace ert {
     }
   }
   
-  object::object(id_t id, real_t xpos, real_t ypos)
-    : id(id), xstart(xpos), ystart(ypos), x(xpos), y(ypos), xprevious(xpos), yprevious(ypos) {
+  object::object(index_t index, id_t id, real_t xpos, real_t ypos, bool solid, bool visible, bool persistent, real_t depth,
+                 real_t sprite_index, real_t mask_index, std::vector<event>& events)
+    : id(id), xstart(xpos), ystart(ypos), x(xpos), y(ypos), xprevious(xpos), yprevious(ypos),
+      _solid(solid), _visible(visible), _persistent(persistent), _depth(depth), _sprite_index(sprite_index)
+      _mask_index(mask_index), defined_events(events) {
   }
   
   void object::create() {

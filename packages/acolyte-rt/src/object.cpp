@@ -62,54 +62,30 @@ namespace ert {
     }
   }
   
-  // TODO, all this needs to be rewritten after header refract
   object::object(index_t index, id_t id, real_t xpos, real_t ypos, bool solid, bool visible, bool persistent, real_t depth,
                  real_t sprite_index, real_t mask_index, std::vector<event>& events)
-    : id(id), xstart(xpos), ystart(ypos), x(xpos), y(ypos), xprevious(xpos), yprevious(ypos),
-      _solid(solid), _visible(visible), _persistent(persistent), _depth(depth), _sprite_index(sprite_index)
-      _mask_index(mask_index), defined_events(events) {
-  }
-  
-  void object::create() {
-    this->properties.solid = this->object_is_solid();
-    this->properties.visible = this->object_is_visible();
-    this->properties.persistent = this->object_is_persistent();
-    this->properties.depth = this->object_depth();
-    this->properties.sprite_index = this->object_sprite_index();
-    this->properties.mask_index = this->object_mask_index();
-    
-    this->properties.image_alpha = 1;
-    this->properties.image_angle = 0;
-    this->properties.image_blend = 0;
-    this->properties.image_index = 0;
-    this->properties.image_speed = 1;
-    this->properties.image_xscale = 1;
-    this->properties.image_yscale = 1;
-    this->properties.friction = 0;
-    this->properties.hfriction = 0;
-    this->properties.vfriction = 0;
-    this->properties.gravity = 0;
-    this->properties.hgravity = 0;
-    this->properties.vgravity = 0;
-    this->properties.gravity_direction = 0;
-    this->properties.hspeed = 0;
-    this->properties.vspeed = 0;
-    this->properties.speed = 0;
-    this->properties.direction = 0;
+      // Specific
+    : _index(index), _id(id), _xstart(xpos), _ystart(ypos), _x(xpos), _y(ypos), _solid(solid), _visible(visible),
+      _depth(depth), _sprite_index(sprite_index), _mask_index(mask_index), defined_events(events),
+                 
+      // Defaults
+      _xprevious(x), _yprevious(y), _image_alpha(1), _image_angle(0), _image_blend(0), _image_index(0), _image_speed(1),
+      _image_xscale(1), _image_yscale(1), _friction(0), _hfriction(0), _vfriction(0), _gravity(0), _hgravity(0), _vgravity(0)
+      _gravity_direction(0), _hspeed(0), _vspeed(0), _speed(0), _direction(0) {
     
     this->link_events();
-    this->object_create();
+    this->event_create();
   }
   
-  void object::destroy() {
-    this->object_destroy();
+  object::~object() {
+    this->event_destroy();
     this->unlink_events();
   }
   
   void object::link_events() {
-    this->linked_events.resize(this->object_events.size());
+    this->linked_events.resize(this->defined_events.size());
     size_t n = 0;
-    for (auto& ev : this->object_events) {
+    for (auto& ev : this->defined_events) {
       this->linked_events[n++] = internal::event_link(this->properties.depth, ev);
     }
   }

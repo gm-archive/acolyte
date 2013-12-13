@@ -15,13 +15,13 @@ namespace ert {
   struct event;
   
 #define def_property(__type, __name) \
-  __type get##__name##(); \
-  __type set##__name##(); \
-  property<object, __type, &object::get_##__name, &object::set_##__name> __name##()
-  
+  __type get_##__name (); \
+  __type set_##__name (); \
+  property_ro<object, __type, &object::get_##__name, &object::set_##__name> __name##()
+
 #define def_property_ro(__type, __name) \
-  __type get_##__name##(); \
-  property_ro<object, __type, &object::get_##__name> __name##()
+  __type get_##__name (); \
+  property_ro<object, __type, &object::get_##__name> __name ()
   
   struct object {
     typedef unsigned long index_t;
@@ -38,6 +38,9 @@ namespace ert {
     
     std::vector<event> defined_events;
     std::vector<std::multimap<real_t, event>::iterator> linked_events;
+    
+    const index_t _index;
+    def_property_ro(index_t, object_index);
     
     const id_t _id;
     def_property_ro(id_t, id);

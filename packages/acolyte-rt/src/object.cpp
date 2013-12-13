@@ -65,35 +65,42 @@ namespace ert {
   object::object(index_t index, id_t id, real_t xpos, real_t ypos, bool solid, bool visible, bool persistent, real_t depth,
                  real_t sprite_index, real_t mask_index, std::vector<event>& events)
       // Specific
-    : _index(index), _id(id), _xstart(xpos), _ystart(ypos), _x(xpos), _y(ypos), _solid(solid), _visible(visible),
-      _depth(depth), _sprite_index(sprite_index), _mask_index(mask_index), defined_events(events),
+    : defined_events(events), linked_events(defined_events.size()), _index(index), _id(id), _xstart(xpos), _ystart(ypos), _x(xpos), _y(ypos), _solid(solid), _visible(visible), _persistent(persistent),
+      _depth(depth), _sprite_index(sprite_index), _mask_index(mask_index),
                  
       // Defaults
-      _xprevious(x), _yprevious(y), _image_alpha(1), _image_angle(0), _image_blend(0), _image_index(0), _image_speed(1),
-      _image_xscale(1), _image_yscale(1), _friction(0), _hfriction(0), _vfriction(0), _gravity(0), _hgravity(0), _vgravity(0)
-      _gravity_direction(0), _hspeed(0), _vspeed(0), _speed(0), _direction(0) {
-    
-    this->link_events();
-    this->event_create();
+      _xprevious(_x), _yprevious(_y), _image_alpha(1), _image_angle(0), _image_blend(0), _image_index(0), _image_speed(1),
+      _image_xscale(1), _image_yscale(1), _direction(0), _friction(0), _hfriction(0), _vfriction(0), _gravity(0), _hgravity(0), _vgravity(0),
+      _gravity_direction(0), _speed(0), _hspeed(0), _vspeed(0) {
+        
+    this->object::unsafe_link_events();
   }
   
   object::~object() {
-    this->event_destroy();
     this->unlink_events();
   }
   
-  void object::link_events() {
-    this->linked_events.resize(this->defined_events.size());
+  void object::unsafe_link_events() {
     size_t n = 0;
     for (auto& ev : this->defined_events) {
-      this->linked_events[n++] = internal::event_link(this->properties.depth, ev);
+      this->linked_events[n++] = internal::event_link(this->_depth, ev);
+    }
+  }
+  
+  void object::link_events() {
+    this->unsafe_unlink_events();
+    this->linked_events.resize(this->defined_events.size());
+    this->unsafe_link_events();
+  }
+  
+  void object::unsafe_unlink_events() {
+    for (auto& ev : this->linked_events) {
+      internal::event_unlink(ev);
     }
   }
   
   void object::unlink_events() {
-    for (auto& ev : this->linked_events) {
-      internal::event_unlink(ev);
-    }
+    this->unsafe_unlink_events();
     this->linked_events.clear();
   }
   

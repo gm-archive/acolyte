@@ -33,11 +33,13 @@ namespace ert {
     virtual void event_create() = 0;
     virtual void event_destroy() = 0;
     
-    void link_events();
-    void unlink_events();
-    
     std::vector<event> defined_events;
     std::vector<std::multimap<real_t, event>::iterator> linked_events;
+    
+    void unsafe_link_events();
+    void link_events();
+    void unsafe_unlink_events();
+    void unlink_events();
     
     const index_t _index;
     def_property_ro(index_t, object_index);
@@ -57,12 +59,6 @@ namespace ert {
     real_t _y;
     def_property(real_t, y);
     
-    real_t _xprevious;
-    def_property_ro(real_t, xprevious);
-    
-    real_t _yprevious;
-    def_property_ro(real_t, yprevious);
-    
     bool _solid;
     def_property(bool, solid);
     
@@ -77,6 +73,15 @@ namespace ert {
     
     real_t _sprite_index;
     def_property(real_t, sprite_index);
+    
+    real_t _mask_index;
+    def_property(real_t, mask_index);
+    
+    real_t _xprevious;
+    def_property_ro(real_t, xprevious);
+    
+    real_t _yprevious;
+    def_property_ro(real_t, yprevious);
     
     real_t _image_alpha;
     def_property(real_t, image_alpha);
@@ -98,9 +103,6 @@ namespace ert {
     
     real_t _image_yscale;
     def_property(real_t, image_yscale);
-    
-    real_t _mask_index;
-    def_property(real_t, mask_index);
     
     real_t _direction;
     def_property(real_t, direction);

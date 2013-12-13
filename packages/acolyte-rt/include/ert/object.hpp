@@ -106,28 +106,34 @@ namespace ert {
     
     real_t _direction;
     def_property(real_t, direction);
+    void update_direction();
     
     real_t _friction;
     real_t _hfriction;
     real_t _vfriction;
     def_property(real_t, friction);
+    void update_friction();
     
     real_t _gravity;
     real_t _hgravity;
     real_t _vgravity;
     def_property(real_t, gravity);
+    void update_gravity();
     
     real_t _gravity_direction;
     def_property(real_t, gravity_direction);
     
     real_t _speed;
     def_property(real_t, speed);
+    void update_speed();
     
     real_t _hspeed;
     def_property(real_t, hspeed);
+    void update_hspeed();
     
     real_t _vspeed;
     def_property(real_t, vspeed);
+    void update_vspeed();
     
     def_property_ro(real_t, sprite_width);
     def_property_ro(real_t, sprite_height);

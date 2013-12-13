@@ -109,11 +109,11 @@ namespace ert {
   }
   
   bool object::get_solid() {
-    return this->properties.solid;
+    return this->_solid;
   }
   
   void object::set_solid(bool solid) {
-    this->properties.solid = solid;
+    this->_solid = solid;
   }
   
   property<object, bool, &object::get_solid, &object::set_solid> object::solid() {
@@ -121,12 +121,12 @@ namespace ert {
   }
   
   bool object::get_visible() {
-    return this->properties.visible;
+    return this->_visible;
   }
   
   void object::set_visible(bool visible) {
     // TODO: link/unlink draw event from event chain
-    this->properties.visible = visible;
+    this->_visible = visible;
   }
   
   property<object, bool, &object::get_visible, &object::set_visible> object::visible() {
@@ -134,24 +134,25 @@ namespace ert {
   }
   
   bool object::get_persistent() {
-    return this->properties.persistent;
+    return this->_persistent;
   }
   
   void object::set_persistent(bool persistent) {
-    this->properties.persistent = persistent;
+    this->_persistent = persistent;
   }
+  
   property<object, bool, &object::get_persistent, &object::set_persistent> object::persistent() {
     return {this};
   }
   
   real_t object::get_depth() {
-    return this->properties.depth;
+    return this->_depth;
   }
   
   void object::set_depth(real_t depth) {
-    this->properties.depth = depth;
-    this->unlink_events();
-    this->link_events();
+    this->_depth = depth;
+    this->unsafe_unlink_events();
+    this->unsafe_link_events();
   }
   
   property<object, real_t, &object::get_depth, &object::set_depth> object::depth() {
@@ -159,11 +160,11 @@ namespace ert {
   }
   
   real_t object::get_sprite_index() {
-    return this->properties.sprite_index;
+    return this->_sprite_index;
   }
   
   void object::set_sprite_index(real_t sprite) {
-    this->properties.sprite_index = sprite;
+    this->_sprite_index = sprite;
   }
   
   property<object, real_t, &object::get_sprite_index, &object::set_sprite_index> object::sprite_index() {
@@ -207,11 +208,11 @@ namespace ert {
   }
   
   real_t object::get_image_alpha() {
-    return this->properties.image_alpha;
+    return this->_image_alpha;
   }
   
   void object::set_image_alpha(real_t alpha) {
-    this->properties.image_alpha = alpha;
+    this->_image_alpha = alpha;
   }
   
   property<object, real_t, &object::get_image_alpha, &object::set_image_alpha> object::image_alpha() {
@@ -219,11 +220,11 @@ namespace ert {
   }
   
   real_t object::get_image_angle() {
-    return this->properties.image_angle;
+    return this->_image_angle;
   }
   
   void object::set_image_angle(real_t angle) {
-    this->properties.image_angle = angle;
+    this->_image_angle = angle;
   }
   
   property<object, real_t, &object::get_image_angle, &object::set_image_angle> object::image_angle() {
@@ -231,11 +232,11 @@ namespace ert {
   }
   
   real_t object::get_image_blend() {
-    return this->properties.image_blend;
+    return this->_image_blend;
   }
   
   void object::set_image_blend(real_t blend) {
-    this->properties.image_blend = blend;
+    this->_image_blend = blend;
   }
   
   property<object, real_t, &object::get_image_blend, &object::set_image_blend> object::image_blend() {
@@ -243,11 +244,11 @@ namespace ert {
   }
   
   real_t object::get_image_index() {
-    return this->properties.image_index;
+    return this->_image_index;
   }
   
   void object::set_image_index(real_t index) {
-    this->properties.image_index = index;
+    this->_image_index = index;
   }
   
   property<object, real_t, &object::get_image_index, &object::set_image_index> object::image_index() {
@@ -264,11 +265,11 @@ namespace ert {
   }
   
   real_t object::get_image_speed() {
-    return this->properties.image_speed;
+    return this->_image_speed;
   }
   
   void object::set_image_speed(real_t speed) {
-    this->properties.image_speed = speed;
+    this->_image_speed = speed;
   }
   
   property<object, real_t, &object::get_image_speed, &object::set_image_speed> object::image_speed() {
@@ -276,11 +277,11 @@ namespace ert {
   }
   
   real_t object::get_image_xscale() {
-    return this->properties.image_xscale;
+    return this->_image_xscale;
   }
   
   void object::set_image_xscale(real_t xscale) {
-    this->properties.image_xscale = xscale;
+    this->_image_xscale = xscale;
   }
   
   property<object, real_t, &object::get_image_xscale, &object::set_image_xscale> object::image_xscale() {
@@ -288,11 +289,11 @@ namespace ert {
   }
   
   real_t object::get_image_yscale() {
-    return this->properties.image_yscale;
+    return this->_image_yscale;
   }
   
   void object::set_image_yscale(real_t yscale) {
-    this->properties.image_yscale = yscale;
+    this->_image_yscale = yscale;
   }
   
   property<object, real_t, &object::get_image_yscale, &object::set_image_yscale> object::image_yscale() {
@@ -300,11 +301,11 @@ namespace ert {
   }
   
   real_t object::get_mask_index() {
-    return this->properties.mask_index;
+    return this->_mask_index;
   }
   
   void object::set_mask_index(real_t index) {
-    this->properties.mask_index = index;
+    this->_mask_index = index;
   }
   
   property<object, real_t, &object::get_mask_index, &object::set_mask_index> object::mask_index() {
@@ -348,18 +349,18 @@ namespace ert {
   }
   
   real_t object::get_direction() {
-    return this->properties.direction;
+    return this->_direction;
   }
   
   void object::set_direction(real_t direction) {
-    this->properties.direction = direction;
+    this->_direction = direction;
     this->update_hspeed();
     this->update_vspeed();
     this->update_friction();
   }
   
   void object::update_direction() {
-    this->properties.direction = internal::vector_direction_rad(this->properties.hspeed, this->properties.vspeed);
+    this->_direction = internal::vector_direction_rad(this->_hspeed, this->_vspeed);
   }
   
   property<object, real_t, &object::get_direction, &object::set_direction> object::direction() {
@@ -367,17 +368,17 @@ namespace ert {
   }
   
   real_t object::get_friction() {
-    return this->properties.friction;
+    return this->_friction;
   }
   
   void object::set_friction(real_t friction) {
-    this->properties.friction = friction;
+    this->_friction = friction;
     this->update_friction();
   }
   
   void object::update_friction() {
-    this->properties.hfriction = this->properties.friction * std::cos(this->properties.direction);
-    this->properties.vfriction = -this->properties.friction * std::sin(this->properties.direction);
+    this->_hfriction = this->_friction * std::cos(this->_direction);
+    this->_vfriction = -this->_friction * std::sin(this->_direction);
   }
   
   property<object, real_t, &object::get_friction, &object::set_friction> object::friction() {
@@ -385,17 +386,17 @@ namespace ert {
   }
   
   real_t object::get_gravity() {
-    return this->properties.gravity;
+    return this->_gravity;
   }
   
   void object::set_gravity(real_t gravity) {
-    this->properties.gravity = gravity;
+    this->_gravity = gravity;
     this->update_gravity();
   }
   
   void object::update_gravity() {
-    this->properties.hgravity = this->properties.gravity * std::cos(this->properties.gravity_direction);
-    this->properties.vgravity = -this->properties.gravity * std::sin(this->properties.gravity_direction);
+    this->_hgravity = this->_gravity * std::cos(this->_gravity_direction);
+    this->_vgravity = -this->_gravity * std::sin(this->_gravity_direction);
   }
   
   property<object, real_t, &object::get_gravity, &object::set_gravity> object::gravity() {
@@ -403,11 +404,11 @@ namespace ert {
   }
   
   real_t object::get_gravity_direction() {
-    return radtodeg(this->properties.gravity_direction);
+    return radtodeg(this->_gravity_direction);
   }
   
   void object::set_gravity_direction(real_t direction) {
-    this->properties.gravity_direction = degtorad(direction);
+    this->_gravity_direction = degtorad(direction);
     this->update_gravity();
   }
   
@@ -416,17 +417,17 @@ namespace ert {
   }
   
   real_t object::get_hspeed() {
-    return this->properties.hspeed;
+    return this->_hspeed;
   }
   
   void object::set_hspeed(real_t hspeed) {
-    this->properties.hspeed = hspeed;
+    this->_hspeed = hspeed;
     this->update_speed();
     this->update_direction();
   }
   
   void object::update_hspeed() {
-    this->properties.hspeed = this->properties.speed * std::cos(this->properties.direction);
+    this->_hspeed = this->_speed * std::cos(this->_direction);
   }
   
   property<object, real_t, &object::get_hspeed, &object::set_hspeed> object::hspeed() {
@@ -434,17 +435,17 @@ namespace ert {
   }
   
   real_t object::get_vspeed() {
-    return this->properties.vspeed;
+    return this->_vspeed;
   }
   
   void object::set_vspeed(real_t vspeed) {
-    this->properties.vspeed = vspeed;
+    this->_vspeed = vspeed;
     this->update_speed();
     this->update_direction();
   }
   
   void object::update_vspeed() {
-    this->properties.vspeed = -this->properties.speed * std::sin(this->properties.direction);
+    this->_vspeed = -this->_speed * std::sin(this->_direction);
   }
   
   property<object, real_t, &object::get_vspeed, &object::set_vspeed> object::vspeed() {
@@ -452,17 +453,17 @@ namespace ert {
   }
   
   real_t object::get_speed() {
-    return this->properties.speed;
+    return this->_speed;
   }
   
   void object::set_speed(real_t speed) {
-    this->properties.speed = speed;
+    this->_speed = speed;
     this->update_hspeed();
     this->update_vspeed();
   }
   
   void object::update_speed() {
-    this->properties.speed = internal::vector_length(this->properties.hspeed, this->properties.vspeed);
+    this->_speed = internal::vector_length(this->_hspeed, this->_vspeed);
   }
   
   property<object, real_t, &object::get_speed, &object::set_speed> object::speed() {

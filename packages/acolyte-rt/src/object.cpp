@@ -77,7 +77,7 @@ namespace ert {
   }
   
   object::~object() {
-    this->unlink_events();
+    this->unsafe_unlink_events();
   }
   
   void object::unsafe_link_events() {

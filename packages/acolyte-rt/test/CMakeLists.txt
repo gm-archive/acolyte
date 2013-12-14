@@ -1,15 +1,11 @@
 
 project(ACOLYTE_RT_TESTS)
 
-add_executable(test_math "test_math.cpp")
+add_executable(test_math EXCLUDE_FROM_ALL "test_math.cpp")
 add_dependencies(test_math googletest)
 
 target_link_libraries(test_math gtest_main acolyte_rt)
-# target_link_libraries(test_math gtest_main)
 
 include_directories(${GTEST_INCLUDE_DIR})
 
-message(STATUS ${ACOLYTE_RT_SOURCE_DIR})
-message(STATUS ${GTEST_INCLUDE_DIR})
-
-add_test(test_math test_math)
+add_test("enigma-rt/math" ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/test_math)

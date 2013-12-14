@@ -10,4 +10,6 @@ include_directories ("include")
 file (GLOB ACOLYTE_RT_SRCS "src/*.cpp")
 file (GLOB ACOLYTE_RT_HEADERS "include/**.hpp")
 
+add_subdirectory(test)
+
 add_library (acolyte_rt ${ACOLYTE_RT_SRCS} ${ACOLYTE_RT_HEADERS})

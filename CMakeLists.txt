@@ -16,8 +16,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build/bin)
 
 set(EXT_PROJECTS_DIR ${PROJECT_SOURCE_DIR}/ext)
 set(PACKAGES_DIR ${PROJECT_SOURCE_DIR}/packages)
-set(TEST_DIR ${PROJECT_SOURCE_DIR}/test)
+
+enable_testing()
 
 add_subdirectory(${EXT_PROJECTS_DIR})
 add_subdirectory(${PACKAGES_DIR})
-# add_subdirectory(${TEST_DIR})

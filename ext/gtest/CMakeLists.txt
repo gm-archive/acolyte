@@ -9,6 +9,7 @@ ExternalProject_Add(googletest
     PREFIX "${CMAKE_CURRENT_BINARY_DIR}"
     INSTALL_COMMAND ""
 )
+add_subdirectory(src/googletest)
 
 ExternalProject_Get_Property(googletest source_dir)
 set(GTEST_INCLUDE_DIR "${source_dir}/include" PARENT_SCOPE)

@@ -8,4 +8,4 @@
 !**/
 !/packages/**/*.cpp
 !/packages/**/*.hpp
-/ext/**/**/*
+/ext/*

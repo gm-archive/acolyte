@@ -149,7 +149,7 @@ namespace ert {
 #undef def_property
 #undef def_property_ro
   
-  enum event_t {
+  enum event_type_t {
     ev_create,
     ev_destroy,
     ev_step,
@@ -165,7 +165,7 @@ namespace ert {
   struct event {
     typedef object::index_t metadata_t;
     std::function<void(const metadata_t)> fn;
-    event_t type;
+    event_type_t type;
     metadata_t metadata;
   };
   
@@ -176,7 +176,7 @@ namespace ert {
   
   namespace internal {
     typedef std::multimap<real_t, event> events_by_depth_t;
-    extern std::map<event_t, events_by_depth_t> event_schedule;
+    extern std::map<event_type_t, events_by_depth_t> event_schedule;
     extern std::map<object::id_t, std::unique_ptr<object>> object_map;
     
     events_by_depth_t::iterator event_link(real_t, event&);

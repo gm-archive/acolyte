@@ -150,8 +150,16 @@ namespace ert {
 #undef def_property_ro
   
   enum event_t {
-    // TODO: events from GM:S documentation
-    ev_placeholder = 0
+    ev_create,
+    ev_destroy,
+    ev_step,
+    ev_alarm,
+    ev_keyboard,
+    ev_mouse,
+    ev_collision,
+    ev_other,
+    ev_draw,
+    ev_keyrelease
   };
   
   struct event {

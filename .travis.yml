@@ -7,12 +7,14 @@ compiler:
 
 before_install:
   - sudo add-apt-repository ppa:ubuntu-toolchain-r/test --yes
+  - sudo add-apt-repository ppa:h-rayflood/llvm --yes
   - sudo add-apt-repository ppa:kalakris/cmake --yes
   - sudo apt-get update
 
+# - sudo apt-get install binutils-gold binutils-dev llvm-toolchain-3.3
 install:
   - sudo apt-get install g++-4.8
-  - sudo apt-get install binutils-gold binutils-dev llvm-dev
+  - sudo apt-get install llvm-toolchain-3.3
   - sudo apt-get install cmake
 
 before_script:

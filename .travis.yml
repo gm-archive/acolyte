@@ -7,11 +7,14 @@ compiler:
 
 before_install:
   - sudo add-apt-repository ppa:ubuntu-toolchain-r/test --yes
+  - sudo add-apt-repository ppa:h-rayflood/llvm --yes
   - sudo add-apt-repository ppa:kalakris/cmake --yes
   - sudo apt-get update
 
 install:
   - sudo apt-get install g++-4.8
+  - sudo apt-get install clang-3.3
+  - sudo apt-get install llvm-3.1
   - sudo apt-get install cmake
   - cmake --version
 

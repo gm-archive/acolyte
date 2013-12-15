@@ -2,7 +2,7 @@
 *
 !.gitignore
 !.gitattributes
-!/travis.yml
+!/.travis.yml
 !/README.md
 !/packages/README.md
 !/LICENSE

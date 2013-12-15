@@ -1,7 +1,9 @@
 
-language: cpp
+language:
+  - cpp
 
-compiler: gcc
+compiler:
+  - gcc
 
 before_install:
   - sudo add-apt-repository ppa:ubuntu-toolchain-r/test --yes
@@ -18,4 +20,17 @@ before_script:
   - cd btree
   - cmake ..
 
-script: make clean && make && make tests && make test ARGS="-V"
+script:
+  - make clean
+  - make
+  - make tests
+  - make test ARGS="-V"
+
+notifications:
+  irc:
+    channels:
+      - "irc.freenode.org#acolyte"
+    on_success: always
+    on_failure: always
+    use_notice: false
+    skip_join: true

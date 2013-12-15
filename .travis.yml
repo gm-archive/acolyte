@@ -27,6 +27,9 @@ script:
   - make test ARGS="-V"
 
 notifications:
+  email:
+    recipients:
+      - acolyte-dev-notifications@googlegroups.com
   irc:
     channels:
       - "irc.freenode.org#acolyte"

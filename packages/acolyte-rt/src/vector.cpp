@@ -1,13 +1,13 @@
 // Copyright (c) 2013 Acolyte Strike Force. All rights reserved.
 // Use of this source code is governed by a BSD3-style license that can be found in the LICENSE file.
 
-#include "ert/real.hpp"
-#include "ert/math.hpp"
-#include "ert/vector.hpp"
+#include "art/real.hpp"
+#include "art/math.hpp"
+#include "art/vector.hpp"
 
 #include <cmath>
 
-namespace ert {
+namespace art {
   namespace internal {
     real_t point_direction_rad(real_t x1, real_t y1, real_t x2, real_t y2) {
       return std::atan2(y1 - y2, x2 - x1) + 2 * pi * (y2 > y1);

@@ -1,12 +1,12 @@
 // Copyright (c) 2013 Acolyte Strike Force. All rights reserved.
 // Use of this source code is governed by a BSD3-style license that can be found in the LICENSE file.
 
-#ifndef ERT_PROPERTY_HPP_
-#define ERT_PROPERTY_HPP_
+#ifndef ART_PROPERTY_HPP_
+#define ART_PROPERTY_HPP_
 
 #include <functional>
 
-namespace ert {
+namespace art {
   template <typename C, typename T, T (C::*getter)()>
   struct property_ro {
     property_ro(C *ptr)
@@ -58,4 +58,4 @@ namespace ert {
   };
 }
 
-#endif // ERT_PROPERTY_HPP_
+#endif // ART_PROPERTY_HPP_

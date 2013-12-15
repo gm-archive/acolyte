@@ -1,13 +1,13 @@
 // Copyright (c) 2013 Acolyte Strike Force. All rights reserved.
 // Use of this source code is governed by a BSD3-style license that can be found in the LICENSE file.
 
-#ifndef ERT_VARIANT_HPP_
-#define ERT_VARIANT_HPP_
+#ifndef ART_VARIANT_HPP_
+#define ART_VARIANT_HPP_
 
-#include "ert/real.hpp"
-#include "ert/string.hpp"
+#include "art/real.hpp"
+#include "art/string.hpp"
 
-namespace ert {
+namespace art {
   struct variant {
     variant() = default;
     variant(real_t);
@@ -40,4 +40,4 @@ namespace ert {
   typedef variant variant_t;
 }
 
-#endif // ERT_VARIANT_HPP_
+#endif // ART_VARIANT_HPP_

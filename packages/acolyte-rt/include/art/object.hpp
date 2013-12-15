@@ -1,17 +1,17 @@
 // Copyright (c) 2013 Acolyte Strike Force. All rights reserved.
 // Use of this source code is governed by a BSD3-style license that can be found in the LICENSE file.
 
-#ifndef ERT_OBJECT_HPP_
-#define ERT_OBJECT_HPP_
+#ifndef ART_OBJECT_HPP_
+#define ART_OBJECT_HPP_
 
-#include "ert/real.hpp"
-#include "ert/property.hpp"
+#include "art/real.hpp"
+#include "art/property.hpp"
 
 #include <memory>
 #include <vector>
 #include <map>
 
-namespace ert {
+namespace art {
   struct event;
   
 #define def_property(__type, __name) \
@@ -192,4 +192,4 @@ namespace ert {
   }
 }
 
-#endif // ERT_OBJECT_HPP_
+#endif // ART_OBJECT_HPP_

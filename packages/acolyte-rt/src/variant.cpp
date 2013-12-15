@@ -1,15 +1,15 @@
 // Copyright (c) 2013 Acolyte Strike Force. All rights reserved.
 // Use of this source code is governed by a BSD3-style license that can be found in the LICENSE file.
 
-#include "ert/real.hpp"
-#include "ert/string.hpp"
-#include "ert/variant.hpp"
+#include "art/real.hpp"
+#include "art/string.hpp"
+#include "art/variant.hpp"
 
 #include <iostream>
 #include <algorithm>
 #include <functional>
 
-namespace ert {
+namespace art {
   namespace {
     void assert_init(const variant_t& var) {
       if (var.type == variant::vt_uninit) {

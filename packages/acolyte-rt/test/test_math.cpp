@@ -3,7 +3,7 @@
 
 #include "gtest/gtest.h"
 
-#include "ert/math.hpp"
+#include "art/math.hpp"
 
 TEST(ert_floor_test, floor_whole)
 {

@@ -1,14 +1,14 @@
 // Copyright (c) 2013 Acolyte Strike Force. All rights reserved.
 // Use of this source code is governed by a BSD3-style license that can be found in the LICENSE file.
 
-#ifndef ERT_BUFFER_HPP_
-#define ERT_BUFFER_HPP_
+#ifndef ART_BUFFER_HPP_
+#define ART_BUFFER_HPP_
 
-#include "ert/real.hpp"
-#include "ert/string.hpp"
-#include "ert/variant.hpp"
+#include "art/real.hpp"
+#include "art/string.hpp"
+#include "art/variant.hpp"
 
-namespace ert {
+namespace art {
   enum {
     buffer_fixed = 0,
     buffer_grow,
@@ -60,4 +60,4 @@ namespace ert {
   real_t buffer_base64_decode(const string_t&);
 }
 
-#endif // ERT_BUFFER_HPP_
+#endif // ART_BUFFER_HPP_

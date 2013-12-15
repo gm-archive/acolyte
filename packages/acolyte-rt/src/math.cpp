@@ -1,9 +1,9 @@
 // Copyright (c) 2013 Acolyte Strike Force. All rights reserved.
 // Use of this source code is governed by a BSD3-style license that can be found in the LICENSE file.
 
-#include "ert/real.hpp"
-#include "ert/variant.hpp"
-#include "ert/math.hpp"
+#include "art/real.hpp"
+#include "art/variant.hpp"
+#include "art/math.hpp"
 
 #include <cmath>
 #include <cstdlib>
@@ -14,7 +14,7 @@
 #include <random>
 #include <initializer_list>
 
-namespace ert {
+namespace art {
   const real_t pi = 3.14159265358979323846;
   
   namespace internal {

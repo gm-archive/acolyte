@@ -1,16 +1,16 @@
 // Copyright (c) 2013 Acolyte Strike Force. All rights reserved.
 // Use of this source code is governed by a BSD3-style license that can be found in the LICENSE file.
 
-#include "ert/real.hpp"
-#include "ert/property.hpp"
-#include "ert/object.hpp"
-#include "ert/math.hpp"
-#include "ert/vector.hpp"
+#include "art/real.hpp"
+#include "art/property.hpp"
+#include "art/object.hpp"
+#include "art/math.hpp"
+#include "art/vector.hpp"
 
 #include <memory>
 #include <iostream>
 
-namespace ert {
+namespace art {
   namespace internal {
     decltype(event_schedule) event_schedule;
     decltype(object_map) object_map;

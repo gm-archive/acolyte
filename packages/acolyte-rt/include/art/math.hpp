@@ -1,18 +1,18 @@
 // Copyright (c) 2013 Acolyte Strike Force. All rights reserved.
 // Use of this source code is governed by a BSD3-style license that can be found in the LICENSE file.
 
-#ifndef ERT_MATH_HPP_
-#define ERT_MATH_HPP_
+#ifndef ART_MATH_HPP_
+#define ART_MATH_HPP_
 
-#include "ert/real.hpp"
-#include "ert/variant.hpp"
+#include "art/real.hpp"
+#include "art/variant.hpp"
 
 #include <array>
 #include <numeric>
 #include <functional>
 #include <random>
 
-namespace ert {
+namespace art {
   extern const real_t pi;
   
   namespace internal {
@@ -147,4 +147,4 @@ namespace ert {
   }
 }
 
-#endif // ERT_MATH_HPP_
+#endif // ART_MATH_HPP_

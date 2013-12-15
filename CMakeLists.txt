@@ -18,7 +18,7 @@ set(EXT_PROJECTS_DIR ${PROJECT_SOURCE_DIR}/ext)
 set(PACKAGES_DIR ${PROJECT_SOURCE_DIR}/packages)
 
 enable_testing()
-add_custom_target(TESTS)
+add_custom_target(tests)
 
 add_subdirectory(${EXT_PROJECTS_DIR})
 add_subdirectory(${PACKAGES_DIR})

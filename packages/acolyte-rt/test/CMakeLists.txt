@@ -7,7 +7,7 @@ set(ACOLYTE_RT_TESTS_SRCS
 )
 
 add_executable(acolyte_rt_tests EXCLUDE_FROM_ALL ${ACOLYTE_RT_TESTS_SRCS})
-add_dependencies(TESTS acolyte_rt_tests)
+add_dependencies(tests acolyte_rt_tests)
 
 include_directories(${GTEST_INCLUDE_DIR})
 target_link_libraries(acolyte_rt_tests gtest gtest_main acolyte_rt)

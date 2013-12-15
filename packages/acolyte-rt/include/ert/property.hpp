@@ -12,7 +12,7 @@ namespace ert {
     property_ro(C *ptr)
       : owner(ptr) {
     }
-    property_ro(property_ro&&) = default;
+    property_ro(property_ro&&); // todo
     property_ro(const property_ro&) = delete;
     property_ro& operator=(const property_ro&) = delete;
     property_ro& operator=(property_ro&&) = delete;
@@ -30,7 +30,7 @@ namespace ert {
     property(C *ptr)
       : owner(ptr) {
     }
-    property(property&&) = default;
+    property(property&&); // todo
     property(const property&) = delete;
     property& operator=(const property&) = delete;
     property& operator=(property&&) = delete;

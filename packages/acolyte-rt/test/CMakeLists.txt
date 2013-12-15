@@ -6,7 +6,7 @@ add_dependencies(test_math googletest)
 
 add_custom_target(tests DEPENDS test_math)
 
-target_link_libraries(test_math gtest_main acolyte_rt)
+target_link_libraries(test_math gtest gtest_main acolyte_rt)
 
 include_directories(${GTEST_INCLUDE_DIR})
 

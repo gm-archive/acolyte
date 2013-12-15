@@ -8,6 +8,7 @@ compiler:
 before_install:
   - sudo add-apt-repository ppa:ubuntu-toolchain-r/test --yes
   - sudo apt-get update
+  - cmake --version
 
 install:
   - sudo apt-get install g++-4.8

@@ -10,6 +10,7 @@
 #include <array>
 #include <numeric>
 #include <functional>
+#include <algorithm>
 #include <random>
 
 namespace art {

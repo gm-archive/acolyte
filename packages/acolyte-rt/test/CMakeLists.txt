@@ -6,6 +6,8 @@ set(ACOLYTE_RT_TESTS_SRCS
     "test_math.cpp"
 )
 
+add_definitions(-std=c++11 -pthread)
+
 add_executable(acolyte_rt_tests EXCLUDE_FROM_ALL ${ACOLYTE_RT_TESTS_SRCS})
 add_dependencies(tests acolyte_rt_tests)
 

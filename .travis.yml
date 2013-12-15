@@ -17,11 +17,6 @@ install:
   - sudo apt-get install llvm-3.1
   - sudo apt-get install cmake
 
-after_install:
-  - g++ --version
-  - clang++ --version
-  - cmake --version
-
 before_script:
   - if [ "${CXX}" == "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
   - mkdir btree

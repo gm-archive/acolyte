@@ -16,6 +16,10 @@ install:
   - sudo apt-get install clang-3.3
   - sudo apt-get install llvm-3.1
   - sudo apt-get install cmake
+
+after_install:
+  - g++ --version
+  - clang++ --version
   - cmake --version
 
 before_script:

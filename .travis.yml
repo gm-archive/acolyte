@@ -12,7 +12,7 @@ before_install:
 
 install:
   - sudo apt-get install g++-4.8
-  - sudo apt-get install binutils-gold
+  - sudo apt-get install binutils-gold binutils-dev llvm-dev
   - sudo apt-get install cmake
 
 before_script:

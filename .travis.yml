@@ -13,8 +13,10 @@ install:
   - sudo apt-get install g++-4.8
   - sudo apt-get install libstdc++-4.8-dev
   - sudo apt-get install devscripts
-  - sudo apt-get install debhelper libcurl4-openssl-dev bash-completion
-  - dget -x -u http://archive.ubuntu.com/ubuntu/pool/main/c/cmake/cmake_2.8.12.1-1ubuntu2.dsc
+  - sudo apt-get install debhelper
+  - sudo apt-get install libcurl4-openssl-dev
+  - sudo apt-get install bash-completion
+  - dget -x -u http://archive.ubuntu.com/ubuntu/pool/main/c/cmake/cmake_2.8.11.2-1ubuntu5.dsc
   - sudo apt-get build-dep cmake
   - cd cmake* && fakeroot dpkg-buildpackage
   - sudo dpkg -I ../cmake*deb

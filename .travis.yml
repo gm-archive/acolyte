@@ -13,7 +13,7 @@ install:
   - sudo apt-get install g++-4.8
   - sudo apt-get install libstdc++-4.8-dev
   - sudo apt-get install devscripts
-  - dget -x -u http://archive.ubuntu.com/ubuntu/pool/main/c/cmake/cmake_2.8.12.1-1ubuntu1.dsc
+  - dget -x -u http://archive.ubuntu.com/ubuntu/pool/main/c/cmake/cmake_2.8.12.1-1ubuntu2.dsc
   - sudo aptitude build-dep cmake
   - cd cmake* && fakeroot dpkg-buildpackage
   - sudo dpkg -I ../cmake*deb

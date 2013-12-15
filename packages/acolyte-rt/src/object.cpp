@@ -39,7 +39,8 @@ namespace ert {
         case noone:
           return;
         default:
-          return (num < 1000001) ? with_objects_index(num, fn) : with_objects_id(num, fn);
+          return (num < 1000001) ?
+            with_objects_index(static_cast<object::index_t>(num), fn) : with_objects_id(static_cast<object::id_t>(num), fn);
       }
     }
     

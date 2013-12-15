@@ -6,8 +6,11 @@ compiler:
   - clang
 
 before_script:
+  - if [ "${CXX}" == "g++" ]; then sudo apt-get install gcc-4.7; fi
+  - if [ "${CXX}" == "g++" ]; then update-alternatives --set gcc "/usr/bin/gcc-4.7"; fi
+  - if [ "${CXX}" == "g++" ]; then update-alternatives --set g++ "/usr/bin/g++-4.7"; fi
   - mkdir build
   - cd build
   - cmake ..
 
-script: make clean && make && make tests && make test
+script: make clean && make && make tests && make test ARGS="-V"

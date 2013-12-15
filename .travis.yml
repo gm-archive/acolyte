@@ -20,4 +20,4 @@ before_script:
   - cd btree
   - cmake ..
 
-script: make clean && make && make tests && make test ARGS="-V"
+script: make clean && make && make googletest && make tests && make test ARGS="-V"

@@ -1,20 +1,15 @@
 
 language: cpp
 
-compiler:
-  - gcc
-  - clang
+compiler: gcc
 
 before_install:
   - sudo add-apt-repository ppa:ubuntu-toolchain-r/test --yes
-  - sudo add-apt-repository ppa:nmi/llvm-3.3 --yes
   - sudo add-apt-repository ppa:kalakris/cmake --yes
   - sudo apt-get update
 
-# - sudo apt-get install binutils-gold binutils-dev llvm-toolchain-3.3
 install:
   - sudo apt-get install g++-4.8
-  - sudo apt-get install binutils-gold binutils-dev llvm-3.3 llvm-3.3-dev
   - sudo apt-get install cmake
 
 before_script:

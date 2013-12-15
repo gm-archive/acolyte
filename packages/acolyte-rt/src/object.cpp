@@ -13,6 +13,8 @@
 namespace art {
   namespace internal {
     decltype(event_schedule) event_schedule;
+    decltype(events_pending_removal) events_pending_removal;
+    decltype(events_pending_addition) events_pending_addition;
     decltype(object_map) object_map;
     
     events_by_depth_t::iterator event_link(real_t depth, event& ev) {

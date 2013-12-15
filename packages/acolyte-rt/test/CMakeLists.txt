@@ -7,7 +7,7 @@ set(ACOLYTE_RT_TESTS_SRCS
 )
 
 add_definitions(-std=c++11 -pthread)
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -flto -fuse-ld=gold")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -flto")
 
 add_executable(acolyte_rt_tests EXCLUDE_FROM_ALL ${ACOLYTE_RT_TESTS_SRCS})
 add_dependencies(tests acolyte_rt_tests)

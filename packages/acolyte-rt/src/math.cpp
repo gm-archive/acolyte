@@ -104,11 +104,11 @@ namespace art {
   }
 
   real_t lengthdir_x(real_t len, real_t dir) {
-    return len * std::cos(dir);
+    return len * std::cos(degtorad(dir));
   }
 
   real_t lengthdir_y(real_t len, real_t dir) {
-    return len * std::sin(dir);
+    return len * std::sin(degtorad(dir));
   }
 
   real_t round(real_t x) {

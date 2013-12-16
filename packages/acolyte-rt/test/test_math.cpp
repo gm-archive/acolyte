@@ -3,7 +3,7 @@
 
 #include "gtest/gtest.h"
 
-#include "art/math.hpp"
+#include "art/real.hpp"
 
 #define EPSILON 0.000000000000001
 

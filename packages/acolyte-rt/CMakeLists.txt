@@ -10,9 +10,9 @@ include_directories("include")
 
 set(ACOLYTE_RT_HEADERS
     "include/art/buffer.hpp"
-    "include/art/math.hpp"
     "include/art/object.hpp"
     "include/art/property.hpp"
+    "include/art/random.hpp"
     "include/art/real.hpp"
     "include/art/string.hpp"
     "include/art/variant.hpp"
@@ -20,8 +20,9 @@ set(ACOLYTE_RT_HEADERS
 )
 
 set(ACOLYTE_RT_SRCS
-    "src/math.cpp"
     "src/object.cpp"
+    "src/random.cpp"
+    "src/real.cpp"
     "src/variant.cpp"
     "src/vector.cpp"
 )

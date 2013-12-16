@@ -38,6 +38,9 @@ namespace art {
   };
   
   typedef variant variant_t;
+
+  real_t is_real(const variant_t&);
+  real_t is_string(const variant_t&);
 }
 
 #endif // ART_VARIANT_HPP_

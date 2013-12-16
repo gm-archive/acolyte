@@ -4,8 +4,6 @@
 #ifndef ART_BUFFER_HPP_
 #define ART_BUFFER_HPP_
 
-#include "art/real.hpp"
-#include "art/string.hpp"
 #include "art/variant.hpp"
 
 namespace art {

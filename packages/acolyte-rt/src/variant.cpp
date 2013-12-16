@@ -1,8 +1,6 @@
 // Copyright (c) 2013 Acolyte Strike Force. All rights reserved.
 // Use of this source code is governed by a BSD3-style license that can be found in the LICENSE file.
 
-#include "art/real.hpp"
-#include "art/string.hpp"
 #include "art/variant.hpp"
 
 #include <iostream>
@@ -99,5 +97,13 @@ namespace art {
     }
     return std::lexicographical_compare(rhs.string.begin(), rhs.string.end(),
       this->string.begin(), this->string.end(), std::greater_equal<char>());
+  }
+
+  real_t is_real(const variant_t& var) {
+    return var.type == variant::vt_real;
+  }
+
+  real_t is_string(const variant_t& var) {
+    return var.type == variant::vt_string;
   }
 }

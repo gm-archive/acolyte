@@ -2,17 +2,6 @@
 // Use of this source code is governed by a BSD3-style license that can be found in the LICENSE file.
 
 #include "art/real.hpp"
-#include "art/variant.hpp"
-#include "art/math.hpp"
-
-#include <cmath>
-#include <cstdlib>
-#include <ctime>
-#include <algorithm>
-#include <functional>
-#include <numeric>
-#include <random>
-#include <initializer_list>
 
 namespace art {
   const real_t pi = 3.14159265358979323846;
@@ -26,47 +15,6 @@ namespace art {
     return 0;
   }
   
-  namespace internal {
-    gen_t rand_gen;
-    real_t rand_seed = std::hash<unsigned>()(internal::rand_gen.default_seed);
-    std::random_device rand_rd;
-  }
-
-  real_t random(real_t ub) {
-    std::uniform_real_distribution<real_t> dis(0, ub);
-    return dis(internal::rand_gen);
-  }
-
-  real_t random_range(real_t lb, real_t ub) {
-    std::uniform_real_distribution<real_t> dis(lb, ub);
-    return dis(internal::rand_gen);
-  }
-
-  real_t irandom(real_t ub) {
-    std::uniform_real_distribution<real_t> dis(0, ub);
-    return std::floor(dis(internal::rand_gen));
-  }
-
-  real_t irandom_range(real_t lb, real_t ub) {
-    std::uniform_real_distribution<real_t> dis(lb, ub);
-    return std::floor(dis(internal::rand_gen));
-  }
-
-  real_t random_set_seed(real_t seed) {
-    internal::rand_seed = seed;
-    internal::rand_gen.seed(std::hash<real_t>()(seed));
-    return 0;
-  }
-
-  real_t random_get_seed() {
-    return internal::rand_seed;
-  }
-
-  real_t randomize() {
-    random_set_seed(internal::rand_rd());
-    return 0;
-  }
-
   real_t arccos(real_t x) {
     return std::acos(x);
   }
@@ -142,14 +90,6 @@ namespace art {
   
   real_t clamp(real_t val, real_t min, real_t max) {
     return val < min ? min : val > max ? max : val;
-  }
-  
-  real_t is_real(const variant_t& var) {
-    return var.type == variant::vt_real;
-  }
-
-  real_t is_string(const variant_t& var) {
-    return var.type == variant::vt_string;
   }
 
   real_t exp(real_t x) {

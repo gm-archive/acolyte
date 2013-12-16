@@ -42,6 +42,10 @@ namespace art {
     void unsafe_unlink_events();
     void unlink_events();
     
+    void instance_change(real_t, bool);
+    real_t instance_copy(bool);
+    void instance_destroy();
+    
     const index_t _index;
     def_property_ro(index_t, object_index);
     
@@ -150,6 +154,15 @@ namespace art {
 #undef def_property
 #undef def_property_ro
   
+  real_t instance_create(real_t, real_t, real_t);
+  bool instance_exists(real_t);
+  real_t instance_find(real_t, real_t);
+  real_t instance_furthest(real_t, real_t, real_t);
+  real_t instance_nearest(real_t, real_t, real_t);
+  real_t instance_number(real_t);
+  real_t instance_place(real_t, real_t, real_t);
+  real_t instance_position(real_t, real_t, real_t);
+  
   enum event_type_t {
     ev_create,
     ev_destroy,
@@ -192,7 +205,7 @@ namespace art {
     
     object& object_from_id(object::id_t);
     
-    typedef std::function<void(object&)> with_fn_t;
+    typedef std::function<void(const object&)> with_fn_t;
     void with(real_t, with_fn_t);
     void with_objects_all(with_fn_t);
     void with_objects_id(object::id_t, with_fn_t);

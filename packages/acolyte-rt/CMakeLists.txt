@@ -2,11 +2,9 @@
 project(ACOLYTE_RT CXX)
 cmake_minimum_required(VERSION 2.8)
 
-#if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-#    add_definitions (-std=c++11 -flto -Wall -Wextra -pedantic -Werror)
-#endif()
-
-add_definitions (-std=c++11 -flto -Wall -Wextra -pedantic -Werror)
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+    add_definitions (-std=c++11 -flto -Wall -Wextra -pedantic -Werror)
+endif()
 
 include_directories("include")
 

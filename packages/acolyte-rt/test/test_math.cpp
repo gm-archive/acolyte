@@ -7,32 +7,29 @@
 
 #define EPSILON 0.000000000000001
 
+using art::real_t;
 using art::pi;
 
 TEST(art_degtorad_tests, degtorad_unit_circle)
 {
-  EXPECT_DOUBLE_EQ(2 * -pi, art::degtorad(-360));
-  EXPECT_DOUBLE_EQ(1.5 * -pi, art::degtorad(-270));
-  EXPECT_DOUBLE_EQ(-pi, art::degtorad(-180));
-  EXPECT_DOUBLE_EQ(0.5 * -pi, art::degtorad(-90));
-  EXPECT_DOUBLE_EQ(0, art::degtorad(0));
-  EXPECT_DOUBLE_EQ(0.5 * pi, art::degtorad(90));
-  EXPECT_DOUBLE_EQ(pi, art::degtorad(180));
-  EXPECT_DOUBLE_EQ(1.5 * pi, art::degtorad(270));
-  EXPECT_DOUBLE_EQ(2 * pi, art::degtorad(360));
+  const real_t N = 360;
+  unsigned eps = 0;
+  real_t rad = 2 * -pi;
+  for (real_t deg = -360; deg < 360; deg += 360 / N) {
+    ASSERT_NEAR(rad, art::degtorad(deg), EPSILON * ++eps);
+    rad += 2 * pi / N;
+  }
 }
 
 TEST(art_radtodeg_tests, radtodeg_unit_circle)
 {
-  EXPECT_DOUBLE_EQ(-360, art::radtodeg(2 * -pi));
-  EXPECT_DOUBLE_EQ(-270, art::radtodeg(1.5 * -pi));
-  EXPECT_DOUBLE_EQ(-180, art::radtodeg(-pi));
-  EXPECT_DOUBLE_EQ(-90, art::radtodeg(0.5 * -pi));
-  EXPECT_DOUBLE_EQ(0, art::radtodeg(0));
-  EXPECT_DOUBLE_EQ(90, art::radtodeg(0.5 * pi));
-  EXPECT_DOUBLE_EQ(180, art::radtodeg(pi));
-  EXPECT_DOUBLE_EQ(270, art::radtodeg(1.5 * pi));
-  EXPECT_DOUBLE_EQ(360, art::radtodeg(2 * pi));
+  const real_t N = 2 * pi;
+  unsigned eps = 0;
+  real_t deg = -360;
+  for (real_t rad = 2 * -pi; rad < 2 * pi; rad += 2 * pi / N) {
+    ASSERT_NEAR(deg, art::radtodeg(rad), EPSILON * ++eps);
+    deg += 360 / N;
+  }
 }
 
 TEST(lengthdir_x_tests, lengthdir_x_direction)

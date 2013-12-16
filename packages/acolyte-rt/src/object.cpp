@@ -97,7 +97,8 @@ namespace art {
   
   void object::unsafe_unlink_events() {
     for (auto& ev : this->linked_events) {
-      internal::event_unlink(ev);
+      internal::events_pending_removal.push_front(ev);
+      (*ev).second.status = event::st_removed;
     }
   }
   

@@ -30,9 +30,11 @@ notifications:
   email:
     recipients:
       - acolyte-dev-notifications@googlegroups.com
+    on_success: always
+    on_failure: always
   irc:
     channels:
-      - "irc.freenode.org#acolyte"
+      - "irc.freenode.net#acolyte"
     on_success: always
     on_failure: always
     use_notice: false

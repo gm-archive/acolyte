@@ -195,6 +195,8 @@ namespace art {
   };
   
   namespace internal {
+    extern const object::id_t first_object_id;
+    
     typedef std::multimap<real_t, event> events_by_depth_t;
     extern std::map<event_type_t, events_by_depth_t> event_schedule;
     extern std::deque<events_by_depth_t::iterator> events_pending_removal;

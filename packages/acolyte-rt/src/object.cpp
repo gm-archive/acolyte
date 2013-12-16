@@ -12,6 +12,8 @@
 
 namespace art {
   namespace internal {
+    const object::id_t first_object_id = 1000001;
+    
     decltype(event_schedule) event_schedule;
     decltype(events_pending_removal) events_pending_removal;
     decltype(object_map) object_map;
@@ -40,7 +42,7 @@ namespace art {
         case noone:
           return;
         default:
-          return (num < 1000001) ?
+          return (num < first_object_id) ?
             with_objects_index(static_cast<object::index_t>(num), fn) : with_objects_id(static_cast<object::id_t>(num), fn);
       }
     }
@@ -471,5 +473,13 @@ namespace art {
   
   property<object, real_t, &object::get_speed, &object::set_speed> object::speed() {
     return {this};
+  }
+  
+  bool instance_exists(real_t id) {
+    if (id < internal::first_object_id) {
+      // TODO
+      return false;
+    }
+    return internal::object_map.find(id) != internal::object_map.end();
   }
 }

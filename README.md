@@ -61,12 +61,11 @@ library or binary. See `packages/README.md` for more information.
 
 ## Testing
 
+[![Build Status](https://travis-ci.org/AcolyteSF/acolyte.png?branch=master)](https://travis-ci.org/AcolyteSF/acolyte)
+
 ### Unit Tests
 
-Acolyte does not currently have any testing infrastructure. This is planned in
-the near future by utilizing [Travis CI].
-
-[Travis CI]: https://travis-ci.org
+This is under construction.
 
 ### Bug Reports
 

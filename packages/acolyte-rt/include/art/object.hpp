@@ -166,8 +166,14 @@ namespace art {
   struct event {
     typedef object::index_t metadata_t;
     std::function<void(const metadata_t)> fn;
-    event_type_t type;
     metadata_t metadata;
+    event_type_t type;
+    
+    enum {
+      st_normal = 0,
+      st_removed,
+      st_pending
+    } status;
   };
   
   enum {
@@ -177,9 +183,8 @@ namespace art {
   
   namespace internal {
     typedef std::multimap<real_t, event> events_by_depth_t;
-    extern std::map<event_type_t, std::multimap<real_t, event>> event_schedule;
+    extern std::map<event_type_t, events_by_depth_t> event_schedule;
     extern std::deque<events_by_depth_t::iterator> events_pending_removal;
-    extern std::deque<std::pair<real_t, event>> events_pending_addition;
     extern std::map<object::id_t, std::unique_ptr<object>> object_map;
     
     events_by_depth_t::iterator event_link(real_t, event&);

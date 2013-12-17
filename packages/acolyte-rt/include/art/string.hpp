@@ -9,7 +9,7 @@
 #include <string>
 
 namespace art {
-  typedef std::string string_t;
+  typedef std::u32string string_t;
 
   string_t ansi_char(real_t);
   string_t chr(real_t val);

@@ -106,4 +106,12 @@ namespace art {
   real_t is_string(const variant_t& var) {
     return var.type == variant::vt_string;
   }
+
+  real_t real(string_t str) {
+    return std::stod(str);
+  }
+
+  string_t string(variant_t var) {
+    //
+  }
 }

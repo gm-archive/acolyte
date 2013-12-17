@@ -6,8 +6,6 @@
 #include <iostream>
 #include <algorithm>
 #include <functional>
-#include <locale>
-#include <codecvt>
 
 namespace art {
   namespace {
@@ -120,10 +118,11 @@ namespace art {
   }
 
   real_t real(variant_t var) {
-    if (var.type == variant::vt_string) {
+    /*if (var.type == variant::vt_string) {
       std::wstring_convert<std::codecvt_utf8<string_t::value_type>, string_t::value_type> convert;
       return std::stod(convert.to_bytes(var.string));
     }
+    */
     return var;
   }
 

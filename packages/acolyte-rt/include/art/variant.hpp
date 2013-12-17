@@ -38,10 +38,14 @@ namespace art {
   };
   
   typedef variant variant_t;
+  
+  namespace internal {
+    string_t real_to_string(real_t, unsigned);
+  }
 
   real_t is_real(const variant_t&);
   real_t is_string(const variant_t&);
-  real_t real(variant_t str);
+  real_t real(variant_t var);
   string_t string(variant_t var);
 }
 

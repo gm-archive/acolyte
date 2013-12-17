@@ -6,6 +6,8 @@
 #include <iostream>
 #include <algorithm>
 #include <functional>
+#include <locale>
+#include <codecvt>
 
 namespace art {
   namespace {
@@ -98,6 +100,16 @@ namespace art {
     return std::lexicographical_compare(rhs.string.begin(), rhs.string.end(),
       this->string.begin(), this->string.end(), std::greater_equal<char>());
   }
+  
+  namespace internal {
+    /*
+    string_t real_to_string(real_t num, unsigned dec) {
+      size_t len = std::swprintf(0, 0, L"%.*f", dec, num);
+      string_t s(++len, 0);
+      std::swprintf(&s[0], len, L"%.*f", dec, num);
+    }
+    */
+  }
 
   real_t is_real(const variant_t& var) {
     return var.type == variant::vt_real;
@@ -107,11 +119,18 @@ namespace art {
     return var.type == variant::vt_string;
   }
 
-  real_t real(variant_t str) {
-    return std::stod(str);
+  real_t real(variant_t var) {
+    if (var.type == variant::vt_string) {
+      std::wstring_convert<std::codecvt_utf8<string_t::value_type>, string_t::value_type> convert;
+      return std::stod(convert.to_bytes(var.string));
+    }
+    return var;
   }
 
   string_t string(variant_t var) {
-    //
+    if (var.type == variant::vt_real) {
+      //
+    }
+    return var;
   }
 }

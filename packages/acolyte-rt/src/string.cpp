@@ -11,4 +11,8 @@ namespace art {
   string_t chr(real_t val) {
     return {{static_cast<string_t::value_type>(val)}};
   }
+
+  real_t ord(string_t str) {
+    return static_cast<real_t>(str[0]);
+  }
 }

@@ -107,7 +107,7 @@ namespace art {
     return var.type == variant::vt_string;
   }
 
-  real_t real(string_t str) {
+  real_t real(variant_t str) {
     return std::stod(str);
   }
 

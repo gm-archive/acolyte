@@ -41,7 +41,7 @@ namespace art {
 
   real_t is_real(const variant_t&);
   real_t is_string(const variant_t&);
-  real_t real(string_t str);
+  real_t real(variant_t str);
   string_t string(variant_t var);
 }
 

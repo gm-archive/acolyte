@@ -23,6 +23,7 @@ set(ACOLYTE_RT_SRCS
     "src/object.cpp"
     "src/random.cpp"
     "src/real.cpp"
+    "src/string.cpp"
     "src/variant.cpp"
     "src/vector.cpp"
 )

@@ -7,7 +7,8 @@
 !/packages/README.md
 !/LICENSE
 !/ext/CMakeLists.txt
-!/ext/*/CMakeLists.txt
+!/ext/gtest/CMakeLists.txt
+!/ext/utf8cpp/CMakeLists.txt
 !/packages/CMakeLists.txt
 !/packages/*/CMakeLists.txt
 !/CMakeLists.txt

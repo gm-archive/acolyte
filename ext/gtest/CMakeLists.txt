@@ -10,6 +10,7 @@ ExternalProject_Add(googletest
                -Dgtest_force_shared_crt=ON
     PREFIX "${CMAKE_CURRENT_BINARY_DIR}"
     INSTALL_COMMAND ""
+    TIMEOUT 10
 )
 
 set_target_properties(googletest PROPERTIES EXCLUDE_FROM_ALL TRUE)

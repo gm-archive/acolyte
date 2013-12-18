@@ -7,6 +7,7 @@ if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR "${CMAKE_CXX_COMPILER_ID}" STR
 endif()
 
 include_directories("include")
+include_directories(${UTF8CPP_INCLUDE_DIR})
 
 set(ACOLYTE_RT_HEADERS
     "include/art/buffer.hpp"
@@ -31,3 +32,4 @@ set(ACOLYTE_RT_SRCS
 add_subdirectory(test)
 
 add_library(acolyte_rt ${ACOLYTE_RT_SRCS} ${ACOLYTE_RT_HEADERS})
+add_dependencies(acolyte_rt utf8cpp)

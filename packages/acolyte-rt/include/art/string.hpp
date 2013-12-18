@@ -5,6 +5,7 @@
 #define ART_STRING_HPP_
 
 #include "art/real.hpp"
+#include "utf8.h"
 
 #include <string>
 

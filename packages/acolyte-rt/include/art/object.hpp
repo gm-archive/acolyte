@@ -154,15 +154,6 @@ namespace art {
 #undef def_property
 #undef def_property_ro
   
-  real_t instance_create(real_t, real_t, real_t);
-  bool instance_exists(real_t);
-  real_t instance_find(real_t, real_t);
-  real_t instance_furthest(real_t, real_t, real_t);
-  real_t instance_nearest(real_t, real_t, real_t);
-  real_t instance_number(real_t);
-  real_t instance_place(real_t, real_t, real_t);
-  real_t instance_position(real_t, real_t, real_t);
-  
   enum event_type_t {
     ev_create,
     ev_destroy,
@@ -213,6 +204,15 @@ namespace art {
     void with_objects_id(object::id_t, with_fn_t);
     void with_objects_index(object::index_t, with_fn_t);
   }
+
+  real_t instance_create(real_t, real_t, real_t);
+  bool instance_exists(object::id_t);
+  real_t instance_find(real_t, real_t);
+  real_t instance_furthest(real_t, real_t, real_t);
+  real_t instance_nearest(real_t, real_t, real_t);
+  real_t instance_number(real_t);
+  real_t instance_place(real_t, real_t, real_t);
+  real_t instance_position(real_t, real_t, real_t);
 }
 
 #endif // ART_OBJECT_HPP_

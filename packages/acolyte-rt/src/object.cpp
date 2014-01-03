@@ -472,7 +472,7 @@ namespace art {
     return {this};
   }
   
-  bool instance_exists(real_t id) {
+  bool instance_exists(object::id_t id) {
     if (id < internal::first_object_id) {
       // TODO
       return false;

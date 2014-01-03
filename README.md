@@ -9,8 +9,8 @@ physics.
 
 This is equivalent to the process undertaken by the proprietary [YoYo Compiler].
 
-[GameMaker: Studio]: (http://www.yoyogames.com/studio)
-[YoYo Compiler]: (http://www.youtube.com/watch?v=i3ECuXBc7Ks)
+[GameMaker: Studio]: http://www.yoyogames.com/studio
+[YoYo Compiler]: http://www.youtube.com/watch?v=i3ECuXBc7Ks
 
 ## Getting Started
 

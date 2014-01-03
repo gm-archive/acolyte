@@ -1,6 +1,6 @@
 
 project(ACOLYTE_RT_TESTS C CXX)
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.10)
 
 set(ACOLYTE_RT_TESTS_SRCS
     "test_math.cpp"

@@ -1,6 +1,6 @@
 
 project(ACOLYTE NONE)
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.10)
 
 set(ACOLYTE_VERSION_MAJOR 1)
 set(ACOLYTE_VERSION_MINOR 0)

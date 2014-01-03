@@ -23,7 +23,7 @@ before_script:
 script:
   - make clean
   - make
-  - make tests
+  - make TESTS
   - make test ARGS="-V"
 
 notifications:

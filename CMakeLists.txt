@@ -17,8 +17,13 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build/bin)
 set(EXT_PROJECTS_DIR ${PROJECT_SOURCE_DIR}/ext)
 set(PACKAGES_DIR ${PROJECT_SOURCE_DIR}/packages)
 
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+set(FOLDER_EXTERNAL "External")
+set(FOLDER_PACKAGES "Packages")
+set(FOLDER_TESTING "Testing")
+
 enable_testing()
-add_custom_target(tests)
+add_custom_target(TESTS)
 
 add_subdirectory(${EXT_PROJECTS_DIR})
 add_subdirectory(${PACKAGES_DIR})

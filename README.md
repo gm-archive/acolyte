@@ -61,7 +61,7 @@ library or binary. See `packages/README.md` for more information.
 
 ## Testing
 
-[![Build Status](https://travis-ci.org/AcolyteSF/acolyte.png?branch=master)](https://travis-ci.org/AcolyteSF/acolyte)
+[![Build Status](https://travis-ci.org/acolytesf/acolyte.png?branch=master)](https://travis-ci.org/acolytesf/acolyte)
 
 ### Unit Tests
 

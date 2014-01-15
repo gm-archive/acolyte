@@ -99,7 +99,7 @@ namespace art {
       this->string.begin(), this->string.end(), std::greater_equal<char>());
   }
   
-  namespace internal {
+  namespace intern {
     /*
     string_t real_to_string(real_t num, unsigned dec) {
       size_t len = std::swprintf(0, 0, L"%.*f", dec, num);

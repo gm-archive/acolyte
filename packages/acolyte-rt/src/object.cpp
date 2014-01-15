@@ -8,7 +8,7 @@
 #include <iostream>
 
 namespace art {
-  namespace internal {
+  namespace intern {
     const object::id_t first_object_id = 1000001;
     
     decltype(event_schedule) event_schedule;
@@ -84,7 +84,7 @@ namespace art {
   void object::unsafe_link_events() {
     size_t n = 0;
     for (auto& ev : this->defined_events) {
-      this->linked_events[n++] = internal::event_link(this->_depth, ev);
+      this->linked_events[n++] = intern::event_link(this->_depth, ev);
     }
   }
   
@@ -96,7 +96,7 @@ namespace art {
   
   void object::unsafe_unlink_events() {
     for (auto& ev : this->linked_events) {
-      internal::events_pending_removal.push_front(ev);
+      intern::events_pending_removal.push_front(ev);
       (*ev).second.status = event::st_removed;
     }
   }
@@ -362,7 +362,7 @@ namespace art {
   }
   
   void object::update_direction() {
-    this->_direction = internal::vector_direction_rad(this->_hspeed, this->_vspeed);
+    this->_direction = intern::vector_direction_rad(this->_hspeed, this->_vspeed);
   }
   
   property<object, real_t, &object::get_direction, &object::set_direction> object::direction() {
@@ -465,7 +465,7 @@ namespace art {
   }
   
   void object::update_speed() {
-    this->_speed = internal::vector_length(this->_hspeed, this->_vspeed);
+    this->_speed = intern::vector_length(this->_hspeed, this->_vspeed);
   }
   
   property<object, real_t, &object::get_speed, &object::set_speed> object::speed() {
@@ -473,10 +473,10 @@ namespace art {
   }
   
   bool instance_exists(object::id_t id) {
-    if (id < internal::first_object_id) {
+    if (id < intern::first_object_id) {
       // TODO
       return false;
     }
-    return internal::object_map.find(id) != internal::object_map.end();
+    return intern::object_map.find(id) != intern::object_map.end();
   }
 }

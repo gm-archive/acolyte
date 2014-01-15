@@ -7,7 +7,7 @@
 #include "art/variant.hpp"
 
 namespace art {
-  namespace internal {
+  namespace intern {
     template <int N>
     struct arch_random_t {
       using gen = std::mt19937;
@@ -38,7 +38,7 @@ namespace art {
     template <size_t N>
     variant_t choose_helper(std::array<variant_t, N> & vars) {
       std::uniform_int_distribution<> dis(0, N - 1);
-      return vars[dis(internal::rand_gen)];
+      return vars[dis(intern::rand_gen)];
     }
   }
 

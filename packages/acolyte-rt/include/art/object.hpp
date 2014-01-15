@@ -180,12 +180,7 @@ namespace art {
     } status;
   };
   
-  enum {
-    all = 0,
-    noone
-  };
-  
-  namespace internal {
+  namespace intern {
     extern const object::id_t first_object_id;
     
     typedef std::multimap<real_t, event> events_by_depth_t;
@@ -199,20 +194,30 @@ namespace art {
     object& object_from_id(object::id_t);
     
     typedef std::function<void(const object&)> with_fn_t;
-    void with(real_t, with_fn_t);
-    void with_objects_all(with_fn_t);
-    void with_objects_id(object::id_t, with_fn_t);
-    void with_objects_index(object::index_t, with_fn_t);
   }
 
-  real_t instance_create(real_t, real_t, real_t);
-  bool instance_exists(object::id_t);
-  real_t instance_find(real_t, real_t);
-  real_t instance_furthest(real_t, real_t, real_t);
-  real_t instance_nearest(real_t, real_t, real_t);
-  real_t instance_number(real_t);
-  real_t instance_place(real_t, real_t, real_t);
-  real_t instance_position(real_t, real_t, real_t);
+  enum {
+    self = -1,
+    other = -2,
+    all = -3,
+    noone = -4,
+  };
+
+  // Scoping
+  exposed void with(real_t, intern::with_fn_t);
+  exposed void with_objects_all(intern::with_fn_t);
+  exposed void with_objects_id(object::id_t, intern::with_fn_t);
+  exposed void with_objects_index(object::index_t, intern::with_fn_t);
+
+  // Instances
+  exposed real_t instance_create(real_t, real_t, real_t);
+  exposed bool instance_exists(object::id_t);
+  exposed real_t instance_find(real_t, real_t);
+  exposed real_t instance_furthest(real_t, real_t, real_t);
+  exposed real_t instance_nearest(real_t, real_t, real_t);
+  exposed real_t instance_number(real_t);
+  exposed real_t instance_place(real_t, real_t, real_t);
+  exposed real_t instance_position(real_t, real_t, real_t);
 }
 
 #endif // ART_OBJECT_HPP_

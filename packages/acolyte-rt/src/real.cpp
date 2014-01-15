@@ -6,12 +6,12 @@
 namespace art {
   const real_t pi = 3.14159265358979323846;
   
-  namespace internal {
+  namespace intern {
     real_t epsilon = 1e-16;
   }
 
   real_t math_set_epsilon(real_t eps) {
-    internal::epsilon = eps;
+    intern::epsilon = eps;
     return 0;
   }
   

@@ -39,7 +39,7 @@ namespace art {
   
   typedef variant variant_t;
   
-  namespace internal {
+  namespace intern {
     string_t real_to_string(real_t, unsigned);
   }
 

@@ -4,7 +4,7 @@
 #include "art/vector.hpp"
 
 namespace art {
-  namespace internal {
+  namespace intern {
     real_t point_direction_rad(real_t x1, real_t y1, real_t x2, real_t y2) {
       return std::atan2(y1 - y2, x2 - x1) + 2 * pi * (y2 > y1);
     }
@@ -23,15 +23,15 @@ namespace art {
   }
   
   real_t point_direction(real_t x1, real_t y1, real_t x2, real_t y2) {
-    return radtodeg(internal::point_direction_rad(x1, y1, x2, y2));
+    return radtodeg(intern::point_direction_rad(x1, y1, x2, y2));
   }
 
   real_t point_distance(real_t x1, real_t y1, real_t x2, real_t y2) {
-    return internal::vector_length(x2 - x1, y2 - y1);
+    return intern::vector_length(x2 - x1, y2 - y1);
   }
 
   real_t point_distance_3d(real_t x1, real_t y1, real_t z1, real_t x2, real_t y2, real_t z2) {
-    return internal::vector_length_3d(x2 - x1, y2 - y1, z2 - z1);
+    return intern::vector_length_3d(x2 - x1, y2 - y1, z2 - z1);
   }
 
   real_t dot_product(real_t x1, real_t y1, real_t x2, real_t y2) {
@@ -43,10 +43,10 @@ namespace art {
   }
 
   real_t dot_product_normalised(real_t x1, real_t y1, real_t x2, real_t y2) {
-    return (x1 * x2 + y1 * y2) / internal::vector_length(x2 - x1, y2 - y1);
+    return (x1 * x2 + y1 * y2) / intern::vector_length(x2 - x1, y2 - y1);
   }
 
   real_t dot_product_normalised_3d(real_t x1, real_t y1, real_t z1, real_t x2, real_t y2, real_t z2) {
-    return (x1 * x2 + y1 * y2 + z1 * z2) / internal::vector_length_3d(x2 - x1, y2 - y1, z2 - z1);
+    return (x1 * x2 + y1 * y2 + z1 * z2) / intern::vector_length_3d(x2 - x1, y2 - y1, z2 - z1);
   }
 }

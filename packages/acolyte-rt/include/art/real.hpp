@@ -4,6 +4,8 @@
 #ifndef ART_REAL_HPP_
 #define ART_REAL_HPP_
 
+#include "art/rt.hpp"
+
 #include <array>
 #include <numeric>
 #include <functional>
@@ -14,7 +16,7 @@ namespace art {
   typedef double real_t;
   extern const real_t pi;
   
-  namespace internal {
+  namespace intern {
     extern real_t epsilon;
   }
 

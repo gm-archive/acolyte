@@ -10,11 +10,11 @@
 #include <string>
 
 namespace art {
-  typedef std::u32string string_t;
+  typedef std::string string_t;
 
-  string_t ansi_char(real_t);
-  string_t chr(real_t val);
-  real_t ord(string_t str);
+  //string_t ansi_char(real_t);
+  //string_t chr(real_t val);
+  //real_t ord(string_t str);
 }
 
 #endif // ART_STRING_HPP_

@@ -14,46 +14,46 @@
 
 namespace art {
   typedef double real_t;
-  extern const real_t pi;
+  exposed const real_t gml_pi;
   
   namespace intern {
     extern real_t epsilon;
   }
 
-  real_t math_set_epsilon(real_t);
+  exposed real_t gml_math_set_epsilon(real_t);
 
   // Trigonometric Functions
-  real_t arccos(real_t);
-  real_t arcsin(real_t);
-  real_t arctan(real_t);
-  real_t arctan2(real_t, real_t);
-  real_t sin(real_t);
-  real_t tan(real_t);
-  real_t cos(real_t);
-  real_t degtorad(real_t);
-  real_t radtodeg(real_t);
-  real_t lengthdir_x(real_t, real_t);
-  real_t lengthdir_y(real_t, real_t);
+  exposed real_t gml_arccos(real_t);
+  exposed real_t gml_arcsin(real_t);
+  exposed real_t gml_arctan(real_t);
+  exposed real_t gml_arctan2(real_t, real_t);
+  exposed real_t gml_sin(real_t);
+  exposed real_t gml_tan(real_t);
+  exposed real_t gml_cos(real_t);
+  exposed real_t gml_degtorad(real_t);
+  exposed real_t gml_radtodeg(real_t);
+  exposed real_t gml_lengthdir_x(real_t, real_t);
+  exposed real_t gml_lengthdir_y(real_t, real_t);
   
   // Rounding Functions
-  real_t round(real_t);
-  real_t floor(real_t);
-  real_t frac(real_t);
-  real_t abs(real_t);
-  real_t sign(real_t);
-  real_t ceil(real_t);
-  real_t lerp(real_t, real_t, real_t);
-  real_t clamp(real_t, real_t, real_t);
+  exposed real_t gml_round(real_t);
+  exposed real_t gml_floor(real_t);
+  exposed real_t gml_frac(real_t);
+  exposed real_t gml_abs(real_t);
+  exposed real_t gml_sign(real_t);
+  exposed real_t gml_ceil(real_t);
+  exposed real_t gml_lerp(real_t, real_t, real_t);
+  exposed real_t gml_clamp(real_t, real_t, real_t);
 
   // Miscellaneous Functions
-  real_t exp(real_t);
-  real_t ln(real_t);
-  real_t power(real_t, real_t);
-  real_t sqr(real_t);
-  real_t sqrt(real_t);
-  real_t log2(real_t);
-  real_t log10(real_t);
-  real_t logn(real_t, real_t);
+  exposed real_t gml_exp(real_t);
+  exposed real_t gml_ln(real_t);
+  exposed real_t gml_power(real_t, real_t);
+  exposed real_t gml_sqr(real_t);
+  exposed real_t gml_sqrt(real_t);
+  exposed real_t gml_log2(real_t);
+  exposed real_t gml_log10(real_t);
+  exposed real_t gml_logn(real_t, real_t);
   
   namespace templates {
     template <size_t N>

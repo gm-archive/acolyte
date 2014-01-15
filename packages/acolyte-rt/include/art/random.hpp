@@ -26,13 +26,13 @@ namespace art {
   }
 
   // Random Functions
-  real_t random(real_t);
-  real_t random_range(real_t, real_t);
-  real_t irandom(real_t);
-  real_t irandom_range(real_t, real_t);
-  real_t random_set_seed(real_t);
-  real_t random_get_seed();
-  real_t randomize();
+  exposed real_t random(real_t);
+  exposed real_t random_range(real_t, real_t);
+  exposed real_t irandom(real_t);
+  exposed real_t irandom_range(real_t, real_t);
+  exposed real_t random_set_seed(real_t);
+  exposed real_t random_get_seed();
+  exposed real_t randomize();
 
   namespace templates {
     template <size_t N>

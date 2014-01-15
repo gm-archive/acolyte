@@ -406,11 +406,11 @@ namespace art {
   }
   
   real_t object::get_gravity_direction() {
-    return radtodeg(this->_gravity_direction);
+    return gml_radtodeg(this->_gravity_direction);
   }
   
   void object::set_gravity_direction(real_t direction) {
-    this->_gravity_direction = degtorad(direction);
+    this->_gravity_direction = gml_degtorad(direction);
     this->update_gravity();
   }
   

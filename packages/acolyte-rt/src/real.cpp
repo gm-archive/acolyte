@@ -4,7 +4,7 @@
 #include "art/real.hpp"
 
 namespace art {
-  const real_t pi = 3.14159265358979323846;
+  exposed const real_t pi = 3.14159265358979323846;
   
   namespace intern {
     real_t epsilon = 1e-16;
@@ -112,7 +112,7 @@ namespace art {
     return std::sqrt(x);
   }
 
-  real_t log2(real_t x) {
+  exposed real_t log2(real_t x) {
     return std::log2(x);
   }
 

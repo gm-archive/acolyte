@@ -11,6 +11,8 @@
 !/ext/utf8cpp/CMakeLists.txt
 !/packages/CMakeLists.txt
 !/packages/*/CMakeLists.txt
+!/stash/**/*.c
+!/stash/**/*.h
 !/CMakeLists.txt
 !**/
 !/packages/**/*.cpp

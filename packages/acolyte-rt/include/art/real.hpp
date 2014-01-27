@@ -17,7 +17,7 @@ namespace art {
   exposed const real_t gml_pi;
   
   namespace intern {
-    extern real_t epsilon;
+    extern real_t intern::epsilon;
   }
 
   exposed real_t gml_math_set_epsilon(real_t);

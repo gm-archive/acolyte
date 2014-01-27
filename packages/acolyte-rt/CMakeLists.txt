@@ -10,7 +10,7 @@ include_directories("include")
 include_directories(${UTF8CPP_INCLUDE_DIR})
 
 set(ACOLYTE_RT_HEADERS
-	"include/art/rt.hpp"
+    "include/art/rt.hpp"
     "include/art/buffer.hpp"
     "include/art/object.hpp"
     "include/art/property.hpp"
@@ -22,6 +22,7 @@ set(ACOLYTE_RT_HEADERS
 )
 
 set(ACOLYTE_RT_SRCS
+    "src/rt.cpp"
     "src/object.cpp"
     "src/random.cpp"
     "src/real.cpp"

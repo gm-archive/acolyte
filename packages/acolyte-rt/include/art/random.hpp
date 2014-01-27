@@ -4,6 +4,7 @@
 #ifndef ART_RANDOM_HPP_
 #define ART_RANDOM_HPP_
 
+#include "art/rt.hpp"
 #include "art/variant.hpp"
 
 namespace art {

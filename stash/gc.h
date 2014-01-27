@@ -23,11 +23,11 @@ typedef struct alloc alloc_t;
 
 struct alloc {
   union {
-    uint16_t meta;
+    uint32_t meta;
     struct {
-      unsigned link : 13;
-      unsigned unused : 1;
-      unsigned type : 2;
+      unsigned link : 29;
+      unsigned gen : 2;
+      unsigned mark : 1;
     };
   };
 };

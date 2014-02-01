@@ -1,10 +1,9 @@
 
 *
+!*.md
 !.gitignore
 !.gitattributes
 !/.travis.yml
-!/README.md
-!/packages/README.md
 !/LICENSE
 !/ext/CMakeLists.txt
 !/ext/gtest/CMakeLists.txt

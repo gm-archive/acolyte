@@ -1,3 +1,5 @@
+Attention: Work is taking place on the wiki, the information here is mostly outdated. The build is no longer being maintained as it's undertaking a rewrite.
+
 # Acolyte
 
 Acolyte is an open source alternative runtime and compiler for projects written
@@ -61,7 +63,7 @@ library or binary. See `packages/README.md` for more information.
 
 ## Testing
 
-[![Build Status](https://travis-ci.org/acolytesf/acolyte.png?branch=master)](https://travis-ci.org/acolytesf/acolyte)
+[![Build Status](https://travis-ci.org/acolyte-sf/acolyte.png?branch=master)](https://travis-ci.org/acolytesf/acolyte)
 
 ### Unit Tests
 
